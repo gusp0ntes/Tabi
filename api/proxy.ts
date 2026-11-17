@@ -1,7 +1,10 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 export const config = { maxDuration: 60 };
 export default async function handler(
-  req: IncomingMessage & { body?: unknown },
+  req: IncomingMessage & {
+    body?: unknown;
+    query?: Record<string, string | string[]>;
+  },
   res: ServerResponse,
 ) {
   res.setHeader("Cache-Control", "no-store");
@@ -23,12 +26,27 @@ export default async function handler(
     if (base.protocol !== "https:" || base.username || base.password)
       throw new Error("Invalid backend URL");
     const incoming = new URL(req.url || "/", "https://tabi.local");
-    if (!incoming.pathname.startsWith("/api/")) {
+    // vercel.json passes the complete API path explicitly, including nested routes.
+    const path =
+      req.query?.__tabi_path ?? incoming.searchParams.get("__tabi_path");
+    if (
+      typeof path !== "string" ||
+      !path ||
+      /[?#\\]/.test(path) ||
+      path.split("/").some((segment) => segment === "." || segment === "..")
+    ) {
       res.statusCode = 404;
       res.end();
       return;
     }
-    const target = new URL(incoming.pathname + incoming.search, base.origin);
+    const target = new URL(`/api/${path}`, base.origin);
+    if (!target.pathname.startsWith("/api/")) {
+      res.statusCode = 404;
+      res.end();
+      return;
+    }
+    target.search = incoming.search;
+    target.searchParams.delete("__tabi_path");
     const headers = new Headers({ Accept: "application/json" });
     for (const key of ["cookie", "origin", "content-type", "x-tabi-request"]) {
       const value = req.headers[key];

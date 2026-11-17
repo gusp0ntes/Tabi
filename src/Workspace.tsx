@@ -21,6 +21,7 @@ import {
   MoreHorizontal,
   Route,
   Settings2,
+  Share2,
   Ticket,
   Users,
   Wallet,
@@ -35,6 +36,7 @@ import {
 } from "./components";
 import { useAuth, useNotice } from "./context";
 import { useTrip } from "./useTrip";
+import Sharing from "./Sharing";
 import {
   finances,
   brl,
@@ -95,6 +97,7 @@ function TripWorkspace({ id }: { id: string }) {
   const [mobile, setMobile] = useState(false);
   const [editing, setEditing] = useState(false);
   const [account, setAccount] = useState(false);
+  const [sharing, setSharing] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [tab]);
@@ -244,6 +247,23 @@ function TripWorkspace({ id }: { id: string }) {
               </span>
             </span>
             <ThemeButton />
+            {trip.role !== "editor" && (
+              <button
+                aria-label="Compartilhar viagem"
+                className="share-trip-button button secondary"
+                onClick={async () => {
+                  if (await flush()) setSharing(true);
+                  else
+                    notice(
+                      "Salve as alterações antes de compartilhar a viagem.",
+                      true,
+                    );
+                }}
+              >
+                <Share2 size={16} />
+                <span>Compartilhar</span>
+              </button>
+            )}
             <button className="edit-trip" onClick={() => setEditing(true)}>
               <Settings2 size={15} />
               <span>Editar viagem</span>
@@ -275,6 +295,12 @@ function TripWorkspace({ id }: { id: string }) {
                   : navigation.find((n) => n.id === tab)?.label}
               </h1>
               <p>{descriptions[tab]}</p>
+              {trip.role === "editor" && (
+                <span className="collaborator-badge">
+                  <Users size={14} /> Viagem compartilhada com você · pode
+                  editar
+                </span>
+              )}
             </div>
             <span className="destination-pill">
               {trip.destination.flag}
@@ -477,6 +503,7 @@ function TripWorkspace({ id }: { id: string }) {
           }}
         />
       )}
+      {sharing && <Sharing trip={trip} onClose={() => setSharing(false)} />}
       {account && (
         <Modal title="Seu espaço no Tabi." onClose={() => setAccount(false)}>
           <p className="muted">

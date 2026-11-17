@@ -8,6 +8,8 @@ const AuthPage = lazy(() => import("./AuthPage"));
 const Onboarding = lazy(() => import("./Onboarding"));
 const MyTrips = lazy(() => import("./MyTrips"));
 const Workspace = lazy(() => import("./Workspace"));
+const SharedTrip = lazy(() => import("./SharedTrip"));
+const Invite = lazy(() => import("./Invite"));
 function Protected({ children }: { children: ReactNode }) {
   const { user, loading, error, refresh } = useAuth();
   const location = useLocation();
@@ -39,6 +41,8 @@ export default function App() {
         <Route path="/entrar" element={<AuthPage />} />
         <Route path="/cadastro" element={<AuthPage register />} />
         <Route path="/nova-viagem" element={<Onboarding />} />
+        <Route path="/viagem/:token" element={<SharedTrip />} />
+        <Route path="/convite/:token" element={<Invite />} />
         <Route
           path="/app"
           element={

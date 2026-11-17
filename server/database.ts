@@ -18,6 +18,14 @@ export interface SessionDocument {
 export interface TripDocument extends TripData {
   _id: ObjectId;
   ownerId: ObjectId;
+  memberIds?: ObjectId[];
+  publicShare?: { token: string; createdAt: Date };
+  invite?: {
+    token: string;
+    createdAt: Date;
+    expiresAt: Date;
+    acceptedBy?: ObjectId;
+  };
   destination: Destination;
   revision: number;
   createdAt: Date;
@@ -35,6 +43,12 @@ export async function setupDatabase(db: Db) {
     c.sessions.createIndex({ tokenHash: 1 }, { unique: true }),
     c.sessions.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),
     c.trips.createIndex({ ownerId: 1, updatedAt: -1 }),
+    c.trips.createIndex({ memberIds: 1, updatedAt: -1 }),
+    c.trips.createIndex(
+      { "publicShare.token": 1 },
+      { unique: true, sparse: true },
+    ),
+    c.trips.createIndex({ "invite.token": 1 }, { unique: true, sparse: true }),
   ]);
 }
 export async function connectDatabase(uri: string, name: string) {

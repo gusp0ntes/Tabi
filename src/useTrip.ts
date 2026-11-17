@@ -23,7 +23,8 @@ export function useTrip(id: string) {
   useEffect(() => {
     mounted.current = true;
     let active = true;
-    api<{ trip: Trip }>("/trips/" + id)
+    const controller = new AbortController();
+    api<{ trip: Trip }>("/trips/" + id, { signal: controller.signal })
       .then((r) => {
         if (!active) return;
         current.current = r.trip;
@@ -31,11 +32,72 @@ export function useTrip(id: string) {
         setTrip(r.trip);
       })
       .catch((e) => {
-        if (active) setError((e as Error).message);
+        if (active && !controller.signal.aborted)
+          setError((e as Error).message);
       });
+    let checking = false;
+    const sync = async () => {
+      if (
+        checking ||
+        !current.current ||
+        document.visibilityState === "hidden" ||
+        desired.current > saved.current ||
+        running.current ||
+        conflict.current
+      )
+        return;
+      checking = true;
+      try {
+        const result = await api<{ trip: Trip }>("/trips/" + id, {
+          signal: controller.signal,
+        });
+        // A remote response must never replace edits made while it was in flight.
+        if (
+          !active ||
+          desired.current > saved.current ||
+          running.current ||
+          conflict.current
+        )
+          return;
+        if (
+          result.trip.revision !== revision.current ||
+          result.trip.participantCount !== current.current?.participantCount
+        ) {
+          current.current = result.trip;
+          revision.current = result.trip.revision;
+          setTrip(result.trip);
+        }
+      } catch (e) {
+        if (active && e instanceof ApiError && [401, 404].includes(e.status)) {
+          if (desired.current > saved.current || running.current) {
+            conflict.current = true;
+            safeStatus(
+              "conflict",
+              "Seu acesso à viagem mudou. Exporte uma cópia das alterações antes de recarregar.",
+            );
+          } else {
+            current.current = null;
+            setTrip(null);
+            setError(e.message);
+          }
+        }
+      } finally {
+        checking = false;
+      }
+    };
+    const check = () => {
+      void sync();
+    };
+    const interval = setInterval(check, 12000);
+    window.addEventListener("focus", check);
+    document.addEventListener("visibilitychange", check);
     return () => {
       active = false;
       mounted.current = false;
+      controller.abort();
+      clearInterval(interval);
+      window.removeEventListener("focus", check);
+      document.removeEventListener("visibilitychange", check);
       if (timer.current) clearTimeout(timer.current);
       void flushRef.current();
     };

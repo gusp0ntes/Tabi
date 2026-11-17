@@ -1,0 +1,790 @@
+/* Shared pages and collaboration use the same destination colors and theme. */
+.sharing-title,
+.sharing-actions,
+.sharing-member,
+.share-link,
+.sharing-footnote,
+.sharing-loading,
+.access-badge,
+.collaborator-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sharing-section + .sharing-section {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.sharing-title {
+  align-items: flex-start;
+}
+.sharing-title > span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+.sharing-title h3 {
+  font-size: 17px;
+  letter-spacing: -0.4px;
+}
+.sharing-title p,
+.sharing-explanation {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.sharing-title h3 small {
+  color: var(--muted);
+  font-weight: 400;
+}
+.sharing-explanation {
+  margin: 15px 0 20px;
+}
+.share-link {
+  align-items: flex-end;
+  margin: 17px 0 10px;
+  gap: 8px;
+}
+.share-link .field {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 13px;
+}
+.share-link input {
+  text-overflow: ellipsis;
+  font-size: 13px;
+  min-height: 46px;
+}
+.share-link .button {
+  padding: 11px 13px;
+  min-height: 46px;
+  font-size: 13px;
+}
+.sharing-actions {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+.sharing-actions .text-link {
+  font-size: 13px;
+}
+.sharing-actions > .input-hint {
+  flex: 1 1 240px;
+  margin: 0;
+}
+.danger-text {
+  color: var(--error);
+}
+.access-badge,
+.collaborator-badge {
+  display: inline-flex;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.access-badge > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a9c28f;
+}
+.sharing-members {
+  margin-top: 20px;
+}
+.sharing-member {
+  padding: 13px 0;
+}
+.sharing-member + .sharing-member {
+  border-top: 1px solid var(--line);
+}
+.member-avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--surface-3);
+  color: var(--accent);
+  font-size: 14px;
+}
+.sharing-member > div:first-of-type {
+  flex: 1;
+  min-width: 0;
+}
+.sharing-member strong {
+  display: block;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.sharing-member small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.sharing-member .text-link {
+  font-size: 12px;
+}
+.member-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.sharing-footnote {
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 24px;
+}
+.sharing-footnote svg {
+  margin-top: 2px;
+}
+.sharing-loading {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 25px 0;
+}
+.collaborator-badge {
+  color: var(--accent);
+  margin-top: 12px;
+}
+.trip-meta {
+  flex-wrap: wrap;
+}
+.trip-meta .collaborator-badge {
+  margin-top: 0;
+  width: 100%;
+}
+.workspace-topbar .share-trip-button {
+  min-height: 38px;
+  padding: 9px 13px;
+  font-size: 13px;
+  gap: 8px;
+}
+.workspace-topbar > div {
+  gap: 15px;
+}
+
+.shared-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 48px;
+}
+.shared-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 105px;
+  border-bottom: 1px solid var(--line);
+}
+.shared-header > div {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.shared-page main {
+  padding-top: 52px;
+}
+.shared-intro {
+  margin-bottom: 30px;
+}
+.shared-intro h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -1.7px;
+  margin: 15px 0;
+  overflow-wrap: anywhere;
+}
+.shared-intro > p {
+  color: var(--muted);
+  font-size: 16px;
+}
+.shared-intro .eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.shared-hero {
+  min-height: 370px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+}
+.shared-hero > img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+.shared-hero::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: linear-gradient(0deg, #09120ae6, #0b170b10 90%);
+}
+.shared-hero > div {
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+}
+.shared-hero > div > span {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.shared-hero h2 {
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin: 13px 0 17px;
+  overflow-wrap: anywhere;
+}
+.shared-hero p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #fff9;
+}
+.shared-facts {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+  margin-bottom: 22px;
+}
+.shared-facts > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 3px 25px;
+}
+.shared-facts > div:first-child {
+  padding-left: 0;
+}
+.shared-facts > div + div {
+  border-left: 1px solid var(--line);
+}
+.shared-facts svg {
+  color: var(--accent);
+}
+.shared-facts span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.shared-facts strong {
+  display: block;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 550;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+.shared-flights {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.shared-flights svg {
+  color: var(--accent);
+  margin-top: 3px;
+}
+.shared-flights strong {
+  font-size: 14px;
+  font-weight: 550;
+}
+.shared-flights p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.shared-itinerary,
+.shared-activities {
+  margin-top: 58px;
+}
+.shared-section-heading {
+  margin-bottom: 26px;
+}
+.shared-section-heading .eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+.shared-section-heading h2 {
+  font-size: 27px;
+  letter-spacing: -0.9px;
+  margin-top: 10px;
+  font-weight: 550;
+}
+.shared-itinerary ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.shared-itinerary li {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.shared-stop-number {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.shared-itinerary li > div {
+  flex: 1;
+  min-width: 0;
+}
+.shared-itinerary h3 {
+  font-size: 21px;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+.shared-itinerary p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.shared-stop-days {
+  background: var(--surface-2);
+  padding: 7px 13px;
+  border-radius: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.shared-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.shared-activity-grid article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 0;
+}
+.shared-activity-grid article > span {
+  color: var(--accent);
+  font-size: 12px;
+}
+.shared-activity-grid h3 {
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: -0.4px;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+.shared-activity-grid p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.shared-empty {
+  color: var(--muted);
+  font-size: 15px;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+}
+.shared-closing {
+  text-align: center;
+  margin: 72px 0 45px;
+  padding: 45px 15px;
+  border-top: 1px solid var(--line);
+}
+.shared-closing .eyebrow {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.shared-closing h2 {
+  font-size: 28px;
+  font-weight: 550;
+  margin: 15px 0 25px;
+}
+.shared-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  padding: 25px 0 35px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.shared-footer > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.invite-page {
+  max-width: 1100px;
+  min-height: 100dvh;
+  margin: auto;
+  padding: 0 40px 60px;
+}
+.invite-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  max-width: 550px;
+  margin: 50px auto 0;
+}
+.invite-cover {
+  width: 100%;
+  height: 220px;
+}
+.invite-body {
+  padding: 35px;
+}
+.invite-body > .eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 1.4px;
+}
+.invite-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 14px 0 22px;
+}
+.invite-body h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+.invite-body > p {
+  font-size: 15px;
+  color: var(--muted);
+}
+.invite-facts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  padding: 20px 0;
+  margin-top: 12px;
+  border-block: 1px solid var(--line);
+}
+.invite-facts > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.invite-facts svg {
+  color: var(--accent);
+}
+.invite-explanation {
+  margin: 24px 0;
+}
+.invite-auth {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.invite-auth > .text-link {
+  font-size: 13px;
+}
+.invite-account {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px !important;
+}
+.invite-body > .button.secondary {
+  margin-top: 25px;
+}
+
+/* More room for the larger, cleaner type throughout the existing app. */
+.landing-copy h1,
+.landing-section-top h2,
+.landing-quote h2,
+.auth-form-wrap > h1,
+.onboard-intro > h1,
+.my-trips-heading h1,
+.trip-hero h2,
+.full-loading h1 {
+  font-weight: 550;
+}
+h1 em,
+h2 em {
+  font-style: normal;
+}
+.input-hint {
+  font-size: 13px;
+}
+.field > input,
+.field > select,
+.field > textarea,
+.password-field > input {
+  font-size: 16px;
+  min-height: 46px;
+}
+.landing-header,
+.workspace-heading,
+.section-heading {
+  flex-wrap: wrap;
+}
+.workspace-heading h1,
+.trip-card h2 {
+  overflow-wrap: anywhere;
+}
+.overview-main > .panel {
+  min-width: 0;
+}
+.overview-money {
+  flex-wrap: wrap;
+  gap: 18px 28px;
+}
+
+@media (max-width: 1100px) {
+  .workspace-topbar .save-status > span {
+    display: none;
+  }
+  .workspace-topbar > div {
+    gap: 12px;
+  }
+  .workspace-topbar {
+    padding-inline: 24px;
+    gap: 15px;
+  }
+  .breadcrumb {
+    max-width: 240px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+@media (max-width: 760px) {
+  .shared-page {
+    padding: 0 24px;
+  }
+  .shared-header {
+    min-height: 90px;
+  }
+  .shared-header > div {
+    gap: 15px;
+  }
+  .shared-header .brand small {
+    display: none;
+  }
+  .shared-page main {
+    padding-top: 35px;
+  }
+  .shared-hero {
+    min-height: 320px;
+  }
+  .shared-hero > div {
+    padding: 28px;
+  }
+  .shared-facts {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .shared-facts > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .shared-facts > div {
+    padding: 0;
+  }
+  .shared-facts > div + div {
+    border: 0;
+  }
+  .shared-activity-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .shared-itinerary,
+  .shared-activities {
+    margin-top: 42px;
+  }
+  .shared-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .invite-page {
+    padding-inline: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .workspace-topbar .share-trip-button {
+    padding: 9px;
+    min-width: 37px;
+  }
+  .share-trip-button > span {
+    display: none;
+  }
+  .workspace-topbar > div {
+    gap: 10px;
+  }
+  .workspace-topbar .breadcrumb {
+    max-width: 135px;
+    overflow-wrap: anywhere;
+    font-size: 11px;
+  }
+  .workspace-topbar {
+    padding-inline: 17px;
+    gap: 8px;
+  }
+  .sharing-title h3 {
+    font-size: 16px;
+  }
+  .sharing-explanation {
+    font-size: 13px;
+  }
+  .sharing-section > .button {
+    font-size: 14px;
+    white-space: normal;
+  }
+  .share-link {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .share-link .button {
+    align-self: flex-end;
+    min-width: 100px;
+  }
+  .sharing-member {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .sharing-member > div:first-of-type {
+    min-width: 100px;
+  }
+  .sharing-member .member-confirm {
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 46px;
+  }
+  .shared-header .access-badge {
+    font-size: 10px;
+  }
+  .shared-header > div {
+    gap: 12px;
+  }
+  .shared-intro h1 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+  .shared-intro > p {
+    font-size: 15px;
+  }
+  .shared-hero {
+    min-height: 280px;
+    border-radius: 14px;
+  }
+  .shared-hero > div {
+    padding: 24px;
+  }
+  .shared-hero h2 {
+    font-size: 40px;
+    letter-spacing: -1.5px;
+  }
+  .shared-facts {
+    gap: 20px 10px;
+  }
+  .shared-facts > div {
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .shared-facts strong {
+    font-size: 14px;
+  }
+  .shared-facts svg {
+    width: 18px;
+    margin-top: 3px;
+  }
+  .shared-flights {
+    padding: 18px;
+  }
+  .shared-section-heading h2 {
+    font-size: 24px;
+  }
+  .shared-itinerary li {
+    gap: 13px;
+    padding: 22px 0;
+  }
+  .shared-stop-number {
+    width: 36px;
+    height: 36px;
+    font-size: 11px;
+  }
+  .shared-itinerary h3 {
+    font-size: 19px;
+  }
+  .shared-itinerary p {
+    font-size: 12px;
+  }
+  .shared-stop-days {
+    padding: 5px 9px;
+    font-size: 12px;
+  }
+  .shared-activity-grid {
+    grid-template-columns: 1fr;
+  }
+  .shared-closing {
+    margin-top: 50px;
+    padding-inline: 0;
+  }
+  .shared-closing h2 {
+    font-size: 26px;
+  }
+  .shared-closing .button {
+    white-space: normal;
+  }
+  .invite-card {
+    margin-top: 30px;
+  }
+  .invite-cover {
+    height: 180px;
+  }
+  .invite-body {
+    padding: 25px;
+  }
+  .invite-body h1 {
+    font-size: 28px;
+  }
+  .invite-body .button {
+    font-size: 14px;
+    white-space: normal;
+  }
+  .invite-body > .eyebrow {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+}

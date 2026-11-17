@@ -1,9 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;650;700;750;800&display=swap");
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 :root {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   color: #e3e8da;
   background: #151c17;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,8 +34,8 @@
   --accent: #d49b77;
   --error: #e9a58c;
   --shadow: 0 20px 65px #0003;
-  --serif: "DM Serif Display", Georgia, serif;
-  --sans: "Manrope", sans-serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --serif: var(--sans);
 }
 :root[data-theme="light"] {
   --bg: #f8f8f2;
@@ -105,15 +120,15 @@ h3 {
   letter-spacing: -0.65px;
 }
 h1 {
-  font-size: 31px;
+  font-size: 34px;
   line-height: 1.35;
 }
 h2 {
-  font-size: 22px;
+  font-size: 24px;
   line-height: 1.4;
 }
 h3 {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
 }
 p {
@@ -142,13 +157,13 @@ textarea {
   background: var(--bg);
   color: var(--text);
   border-radius: 7px;
-  font-size: 13px;
+  font-size: 16px;
   outline-offset: 2px;
 }
 input::placeholder,
 textarea::placeholder {
   color: var(--subtle);
-  font-size: 12px;
+  font-size: 15px;
 }
 select {
   cursor: pointer;
@@ -173,7 +188,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: column;
   gap: 9px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--muted);
   margin-bottom: 19px;
@@ -184,7 +199,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 0;
   top: 1px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--subtle);
 }
@@ -201,7 +216,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 6px;
   padding: 12px 18px;
   min-height: 43px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
   border: 1px solid transparent;
@@ -233,18 +248,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .button.large {
   padding: 17px 22px;
   min-height: 54px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .button.compact-button {
   min-height: 38px;
   padding: 10px 14px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .text-link {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--muted);
   padding: 0;
@@ -276,7 +291,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .eyebrow {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 1.8px;
   color: var(--subtle);
@@ -285,21 +300,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .muted {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
 }
 .subtle {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
 }
 .input-hint {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--subtle);
   line-height: 1.9;
   font-weight: 400;
 }
 .footnote {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   line-height: 1.9;
 }
@@ -317,11 +332,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 22px;
 }
 .section-heading h2 {
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 700;
 }
 .section-heading .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   margin-bottom: 6px;
 }
 .divider {
@@ -347,7 +362,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   gap: 15px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   margin: 20px 0 9px;
 }
 .progress-label strong {
@@ -355,7 +370,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 600;
 }
 .form-error {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--error);
   line-height: 1.8;
   margin: 14px 0 18px;
@@ -364,7 +379,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.8;
   margin: 15px 0;
@@ -385,7 +400,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .brand > span:last-child {
   font-family: var(--sans);
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   letter-spacing: -1.8px;
   line-height: 1;
@@ -394,7 +409,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--accent);
 }
 .brand small {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--sans);
   display: block;
   color: var(--muted);
   font-size: 6px;
@@ -412,7 +427,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 21px;
 }
 .brand.compact > span:last-child {
-  font-size: 26px;
+  font-size: 28px;
 }
 .brand.compact small {
   display: none;
@@ -444,12 +459,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 20px;
 }
 .modal-heading h2 {
-  font-size: 25px;
+  font-size: 28px;
   line-height: 1.5;
   letter-spacing: -0.8px;
 }
 .modal-heading .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   color: var(--accent);
 }
 .modal-heading > .icon-button {
@@ -459,7 +474,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .modal-description {
   margin-bottom: 24px;
   line-height: 1.9;
-  font-size: 12px;
+  font-size: 15px;
 }
 .modal-actions {
   display: flex;
@@ -472,7 +487,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .prose p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.9;
   margin: 15px 0;
 }
@@ -498,7 +513,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   z-index: 100;
   max-width: calc(100% - 30px);
   width: max-content;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.7;
   animation: toast-in 0.2s ease-out;
 }
@@ -534,14 +549,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--accent);
 }
 .empty h2 {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 650;
   max-width: 500px;
   color: var(--text);
   line-height: 1.5;
 }
 .empty p {
-  font-size: 13px;
+  font-size: 16px;
   max-width: 440px;
   margin: 15px auto 25px;
 }
@@ -557,17 +572,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .full-loading > .eyebrow {
   color: var(--accent);
-  font-size: 8px;
+  font-size: 10px;
   margin-top: 40px;
 }
 .full-loading h1 {
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1.6;
   max-width: 600px;
   font-weight: 600;
 }
 .full-loading p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin-top: 15px;
 }
@@ -619,7 +634,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   text-align: center;
 }
 .service-error h1 {
-  font-size: 26px;
+  font-size: 28px;
 }
 .service-error p {
   color: var(--muted);
@@ -651,7 +666,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 32px;
   margin-left: 55px;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
 }
 .landing-header > nav > a:hover {
@@ -663,7 +678,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 23px;
 }
 .login-link {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
 }
 .login-link:hover {
@@ -685,7 +700,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 9px;
   color: var(--accent);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1.6px;
   font-weight: 550;
   margin-bottom: 22px;
@@ -719,7 +734,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   line-height: 1;
 }
 .landing-copy > p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.9;
   margin: 25px 0 27px;
@@ -729,7 +744,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 6px;
   color: var(--subtle);
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 14px;
 }
 .landing-little-note {
@@ -742,7 +757,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--subtle);
 }
 .landing-little-note > span:first-child {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0;
 }
 .landing-little-note > i {
@@ -801,7 +816,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   align-items: center;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 500;
 }
 .travel-print > span > svg:last-child {
@@ -844,7 +859,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   z-index: 4;
 }
 .print-japan > small {
-  font-size: 16px;
+  font-size: 18px;
   font-family: var(--serif);
   writing-mode: vertical-rl;
   letter-spacing: 4px;
@@ -881,14 +896,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--accent);
 }
 .collage-ticket > span:nth-child(2) {
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.8;
 }
 .collage-ticket strong {
   display: block;
   font-weight: 600;
   color: var(--text);
-  font-size: 11px;
+  font-size: 14px;
 }
 .collage-ticket > i {
   height: 29px;
@@ -929,7 +944,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .landing-benefits svg {
   color: #b4c59b;
@@ -952,7 +967,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 35px;
 }
 .landing-section-top .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1.7px;
   margin-bottom: 15px;
 }
@@ -968,7 +983,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 400;
 }
 .landing-section-top > p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.9;
   max-width: 300px;
@@ -1001,12 +1016,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 9px;
 }
 .how-grid h3 {
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: -0.3px;
   margin-bottom: 11px;
 }
 .how-grid p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.9;
   max-width: 290px;
@@ -1050,7 +1065,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 26px;
   display: grid;
   place-items: center;
-  font-size: 8px;
+  font-size: 10px;
   color: #fff;
 }
 .destination-card > div {
@@ -1063,7 +1078,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .destination-card > div > span {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: #f6f4e4b3;
   margin-bottom: 7px;
 }
@@ -1071,7 +1086,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 650;
   letter-spacing: -0.8px;
 }
@@ -1097,7 +1112,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .landing-quote .eyebrow {
   color: var(--accent);
-  font-size: 8px;
+  font-size: 10px;
 }
 .landing-quote h2 {
   font-family: var(--serif);
@@ -1111,7 +1126,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--muted);
 }
 .landing-quote p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin: 18px 0 23px;
   line-height: 1.9;
@@ -1164,11 +1179,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 15px;
   cursor: pointer;
   list-style: none;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text);
 }
 .faq-section summary > span {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 300;
   color: var(--subtle);
 }
@@ -1176,7 +1191,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   transform: rotate(45deg);
 }
 .faq-section details p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin: 16px 30px 4px 0;
   line-height: 1.9;
@@ -1191,12 +1206,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 .landing-footer p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   margin-top: 12px;
 }
 .landing-footer > div:last-child {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   text-align: right;
 }
@@ -1207,7 +1222,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 6px;
   margin: 12px 0 0 auto;
   padding: 0;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 /* Account and the two short onboarding steps. */
@@ -1249,7 +1264,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .auth-picture-copy .eyebrow {
   color: #eae3c4;
-  font-size: 8px;
+  font-size: 10px;
 }
 .auth-picture-copy h2 {
   font-family: var(--serif);
@@ -1265,7 +1280,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .auth-picture-copy > span:last-child {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   color: #f2ead6;
 }
 .auth-picture-copy > span:last-child > span {
@@ -1301,7 +1316,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .auth-form-wrap > .eyebrow {
   color: var(--accent);
-  font-size: 8px;
+  font-size: 10px;
 }
 .auth-form-wrap > h1 {
   font-family: var(--serif);
@@ -1312,13 +1327,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 13px 0 16px;
 }
 .auth-form-wrap > .muted {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.9;
   margin-bottom: 32px;
 }
 .auth-form-wrap .field {
   margin-bottom: 21px;
-  font-size: 12px;
+  font-size: 15px;
 }
 .auth-form-wrap .field > input,
 .auth-form-wrap .password-field > input {
@@ -1342,11 +1357,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .auth-form-wrap .button {
   margin-top: 5px;
   min-height: 46px;
-  font-size: 12px;
+  font-size: 15px;
 }
 .auth-switch {
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   padding-top: 24px;
   margin-top: 24px;
@@ -1361,12 +1376,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 7px;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
   margin-top: 22px;
 }
 .auth-panel > footer {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
   text-align: center;
 }
@@ -1389,7 +1404,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 25px;
 }
 .onboard-welcome {
-  font-size: 11px;
+  font-size: 14px;
 }
 .onboard-layout {
   display: grid;
@@ -1404,7 +1419,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .onboard-intro > .eyebrow {
   color: var(--accent);
-  font-size: 8px;
+  font-size: 10px;
 }
 .onboard-intro > h1 {
   font-family: var(--serif);
@@ -1419,7 +1434,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--accent);
 }
 .onboard-intro > p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--muted);
   margin-top: 21px;
@@ -1429,7 +1444,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   gap: 18px;
   margin: 30px 0 32px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .onboard-steps > span {
   display: flex;
@@ -1445,7 +1460,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  font-size: 9px;
+  font-size: 11px;
 }
 .onboard-steps .current {
   color: var(--text);
@@ -1477,11 +1492,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 6px;
   align-items: center;
   color: white;
-  font-size: 11px;
+  font-size: 14px;
 }
 .onboard-preview > small {
   display: block;
-  font-size: 8px;
+  font-size: 10px;
   color: var(--subtle);
   margin-top: 10px;
 }
@@ -1489,7 +1504,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 33px 36px;
 }
 .onboard-form > .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1.7px;
   margin-bottom: 24px;
 }
@@ -1505,13 +1520,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 19px;
 }
 .onboard-form > h2 {
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.4;
   letter-spacing: -0.9px;
   font-weight: 650;
 }
 .onboard-form > .muted {
-  font-size: 12px;
+  font-size: 15px;
   margin: 12px 0 30px;
   line-height: 1.9;
 }
@@ -1538,7 +1553,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 7px;
 }
 .onboard-suggestions button {
-  font-size: 10px;
+  font-size: 12px;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -1561,7 +1576,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 7px;
   align-items: center;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: 12px;
 }
@@ -1587,7 +1602,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .counter > strong {
   font-family: var(--sans);
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 650;
 }
 .style-options {
@@ -1611,12 +1626,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .style-options strong {
   display: block;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 550;
 }
 .style-options small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 3px;
 }
@@ -1631,17 +1646,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .onboard-form-actions > .primary {
   flex: 1;
-  font-size: 11px;
+  font-size: 14px;
 }
 .onboard-account-note {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   line-height: 1.8;
   margin-top: 16px;
 }
 .onboard-page > footer {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
   text-align: center;
   padding: 25px 0 30px;
@@ -1671,7 +1686,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   text-align: left;
   padding: 10px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 15px;
 }
 .city-results > button[aria-selected="true"],
 .city-results > button:hover {
@@ -1679,7 +1694,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .city-results small {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 3px;
 }
@@ -1710,11 +1725,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 400;
 }
 .my-trips-heading p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.9;
 }
 .account-name {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
 }
 .my-trip-grid {
@@ -1754,7 +1769,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   left: 20px;
   z-index: 1;
   color: white;
-  font-size: 11px;
+  font-size: 14px;
 }
 .trip-card-photo > svg {
   position: absolute;
@@ -1773,7 +1788,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 10px;
 }
 .trip-card-body h2 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.6;
   letter-spacing: -0.45px;
 }
@@ -1786,7 +1801,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-wrap: wrap;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .trip-meta > span {
   display: flex;
@@ -1797,17 +1812,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   margin: 25px 0 9px;
 }
 .trip-card-progress strong {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--text);
 }
 .my-trips-note {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   text-align: center;
   margin-top: 40px;
@@ -1841,7 +1856,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   letter-spacing: 1.5px;
 }
 .back-to-trips {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   display: flex;
   align-items: center;
@@ -1853,7 +1868,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--text);
 }
 .sidebar-label {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1.5px;
   color: var(--subtle);
   padding: 0 13px;
@@ -1870,7 +1885,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 12px;
   padding: 13px;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   border-radius: 6px;
   text-align: left;
@@ -1899,7 +1914,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .sidebar nav button small {
   margin-left: auto;
-  font-size: 8px;
+  font-size: 10px;
   background: var(--surface-3);
   padding: 2px 5px;
   border-radius: 3px;
@@ -1924,7 +1939,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 4px;
 }
 .more-items > button {
-  font-size: 11px;
+  font-size: 14px;
 }
 .sidebar-bottom {
   margin-top: auto;
@@ -1939,13 +1954,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .sidebar-destination > span {
   display: block;
-  font-size: 25px;
+  font-size: 28px;
   line-height: 1.3;
   margin-bottom: 11px;
 }
 .sidebar-destination > strong {
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 650;
   letter-spacing: -0.4px;
   display: block;
@@ -1953,7 +1968,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .sidebar-destination > small {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
 }
 .sidebar-destination > .progress {
@@ -1978,16 +1993,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 15px;
 }
 .sidebar-account strong {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 550;
 }
 .sidebar-account small {
   display: block;
-  font-size: 8px;
+  font-size: 10px;
   color: var(--subtle);
   margin-top: 3px;
 }
@@ -2018,7 +2033,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
 }
 .breadcrumb strong {
@@ -2029,7 +2044,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
 }
 .save-status.saved > svg {
@@ -2043,7 +2058,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   border-left: 1px solid var(--line);
   padding: 5px 0 5px 18px;
@@ -2064,17 +2079,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 28px;
 }
 .workspace-heading h1 {
-  font-size: 29px;
+  font-size: 32px;
   letter-spacing: -1px;
   line-height: 1.5;
 }
 .workspace-heading .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1.9px;
   margin-bottom: 7px;
 }
 .workspace-heading p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin-top: 8px;
   line-height: 1.8;
@@ -2091,7 +2106,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .destination-pill > span {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .trip-hero {
@@ -2122,7 +2137,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 30px 36px;
 }
 .trip-hero > div:last-of-type > span:first-child {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: #f5e1c3;
 }
@@ -2139,7 +2154,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-style: normal;
 }
 .trip-hero p {
-  font-size: 11px;
+  font-size: 14px;
   color: #e3e1d0;
   line-height: 1.9;
   margin-top: 8px;
@@ -2148,12 +2163,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 20px;
   color: #eee8d5;
 }
 .trip-hero-meta > span {
-  font-size: 8px;
+  font-size: 10px;
   margin: 0 3px;
 }
 .trip-hero > small {
@@ -2163,7 +2178,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   align-items: center;
-  font-size: 8px;
+  font-size: 10px;
   color: #eee7d9b3;
 }
 .overview-main {
@@ -2179,13 +2194,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .overview-money > div > span {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-bottom: 7px;
 }
 .overview-money strong {
   font-family: var(--sans);
-  font-size: 29px;
+  font-size: 32px;
   letter-spacing: -1px;
   font-weight: 700;
 }
@@ -2197,10 +2212,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .inline-cash {
   margin: 23px 0 10px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .inline-cash > input {
-  font-size: 20px;
+  font-size: 22px;
   font-family: var(--sans);
   letter-spacing: -0.5px;
   min-height: 50px;
@@ -2210,7 +2225,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 21px;
 }
 .overview-funds > .input-hint {
-  font-size: 10px;
+  font-size: 12px;
 }
 .overview-route .section-heading {
   margin-bottom: 25px;
@@ -2236,7 +2251,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 28px;
   border: 1px solid var(--line);
   border-radius: 50%;
-  font-size: 8px;
+  font-size: 10px;
   color: var(--accent);
   background: var(--surface-2);
 }
@@ -2245,18 +2260,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .mini-route strong {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 550;
   letter-spacing: -0.2px;
 }
 .mini-route small {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
   margin-top: 4px;
 }
 .mini-route > div > small {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin: 0;
 }
@@ -2264,7 +2279,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 15px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
   border-top: 1px solid var(--line);
   padding-top: 20px;
@@ -2297,10 +2312,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-shrink: 0;
 }
 .next-step-strip h3 {
-  font-size: 14px;
+  font-size: 16px;
 }
 .next-step-strip p {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 6px;
 }
@@ -2313,7 +2328,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  font-size: 8px;
+  font-size: 10px;
   color: var(--subtle);
   margin-top: 32px;
   padding: 19px 0 25px;
@@ -2326,7 +2341,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: color-mix(in srgb, var(--error) 9%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--error) 40%, var(--line));
   border-radius: 7px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--error);
   margin-bottom: 25px;
   flex-wrap: wrap;
@@ -2336,7 +2351,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   min-width: 180px;
 }
 .save-error > button {
-  font-size: 10px;
+  font-size: 12px;
   text-decoration: underline;
   color: var(--text);
 }
@@ -2360,12 +2375,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .flight-settings summary {
   cursor: pointer;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin-bottom: 16px;
 }
 .flight-settings summary > .optional {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   margin-left: 7px;
 }
@@ -2401,7 +2416,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--accent);
   padding-top: 3px;
 }
@@ -2414,7 +2429,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   min-width: 0;
 }
 .route-card-main h2 {
-  font-size: 27px;
+  font-size: 30px;
   font-weight: 650;
   display: flex;
   gap: 15px;
@@ -2422,14 +2437,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   letter-spacing: -0.8px;
 }
 .route-card-main h2 > span {
-  font-size: 22px;
+  font-size: 24px;
 }
 .route-card-main > .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   margin-bottom: 7px;
 }
 .route-card-main > p {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 9px;
 }
@@ -2441,7 +2456,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 22px;
 }
 .route-card-bottom > .text-link {
-  font-size: 10px;
+  font-size: 12px;
 }
 .stepper {
   display: flex;
@@ -2465,11 +2480,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: var(--surface-3);
 }
 .stepper > span {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .stepper strong {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text);
 }
@@ -2492,24 +2507,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 23px;
 }
 .route-explanation > h3 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.6;
   font-weight: 650;
 }
 .route-explanation > p {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.9;
   color: var(--muted);
   margin-top: 15px;
 }
 .route-explanation > strong {
   font-family: var(--sans);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 650;
   letter-spacing: -0.7px;
 }
 .route-explanation > p.input-hint {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
 }
 .scenario-grid {
@@ -2538,7 +2553,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 550;
   margin-bottom: 20px;
 }
@@ -2548,7 +2563,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .scenario > strong {
   display: block;
   font-family: var(--sans);
-  font-size: 28px;
+  font-size: 30px;
   letter-spacing: -0.9px;
   font-weight: 650;
 }
@@ -2556,7 +2571,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--accent);
 }
 .scenario > p {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 8px;
 }
@@ -2565,7 +2580,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 4px;
 }
 .scenario > small {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
 }
 .budget-layout {
@@ -2575,10 +2590,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: start;
 }
 .budget-breakdown .section-heading h2 {
-  font-size: 18px;
+  font-size: 20px;
 }
 .budget-breakdown .section-heading > .text-link {
-  font-size: 9px;
+  font-size: 11px;
 }
 .stacked-bar {
   display: flex;
@@ -2589,7 +2604,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 26px 0 18px;
 }
 .budget-breakdown > .input-hint {
-  font-size: 10px;
+  font-size: 12px;
 }
 .budget-rows {
   margin-top: 15px;
@@ -2601,7 +2616,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   border-bottom: 1px solid var(--line);
   padding: 14px 0;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
 }
 .budget-row > span {
@@ -2618,7 +2633,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-shrink: 0;
 }
 .budget-row > span > small {
-  font-size: 8px;
+  font-size: 10px;
   color: var(--subtle);
 }
 .budget-row > div {
@@ -2627,17 +2642,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 7px;
 }
 .budget-row > div > span {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
 }
 .budget-row input {
   text-align: right;
-  font-size: 12px;
+  font-size: 15px;
   padding: 8px;
   min-height: 34px;
 }
 .budget-row > small {
-  font-size: 10px;
+  font-size: 12px;
   text-align: right;
   color: var(--subtle);
 }
@@ -2647,11 +2662,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 20px;
   padding: 25px 0;
-  font-size: 12px;
+  font-size: 15px;
 }
 .budget-total > strong {
   font-family: var(--sans);
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 650;
   letter-spacing: -0.7px;
 }
@@ -2666,27 +2681,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 7px;
 }
 .budget-goal > h2 {
-  font-size: 32px;
+  font-size: 34px;
   letter-spacing: -1px;
   font-weight: 700;
   margin-top: 10px;
 }
 .budget-goal > p:not(.input-hint) {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin-top: 7px;
 }
 .budget-goal .progress-label {
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 27px;
 }
 .budget-goal > .field {
   margin-top: 24px;
-  font-size: 11px;
+  font-size: 14px;
   margin-bottom: 12px;
 }
 .budget-goal > .input-hint {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.9;
 }
 .budget-tip {
@@ -2699,12 +2714,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 3px;
 }
 .budget-tip h3 {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   font-weight: 550;
 }
 .budget-tip p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--subtle);
   line-height: 1.9;
   margin-top: 10px;
@@ -2714,7 +2729,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 22px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .legend > span {
   display: flex;
@@ -2747,7 +2762,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 25px;
 }
 .calendar-toolbar > h2 {
-  font-size: 20px;
+  font-size: 22px;
   text-transform: capitalize;
 }
 .calendar-toolbar > div {
@@ -2756,13 +2771,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 6px;
 }
 .calendar-toolbar .text-link {
-  font-size: 9px;
+  font-size: 11px;
   margin-right: 9px;
 }
 .calendar-week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1px;
   color: var(--subtle);
   text-align: center;
@@ -2796,14 +2811,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   padding: 0 3px;
   margin-bottom: 5px;
 }
 .calendar-day > small {
   display: block;
-  font-size: 8px;
+  font-size: 10px;
   padding: 3px 4px;
   background: color-mix(in srgb, var(--accent) 9%, var(--surface));
   border-left: 2px solid var(--accent);
@@ -2864,7 +2879,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   bottom: 6px;
 }
 .calendar-note {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--subtle);
   line-height: 1.8;
   margin-top: 18px;
@@ -2878,13 +2893,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 7px;
 }
 .day-panel > h2 {
-  font-size: 25px;
+  font-size: 28px;
   letter-spacing: -0.8px;
   line-height: 1.5;
 }
 .day-weekday {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   text-transform: capitalize;
   margin-top: 6px;
 }
@@ -2896,7 +2911,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-top: 23px;
   margin: 23px 0;
   color: var(--accent);
-  font-size: 12px;
+  font-size: 15px;
 }
 .day-city > strong {
   font-weight: 550;
@@ -2904,7 +2919,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .day-city > small {
   margin-left: auto;
   color: var(--subtle);
-  font-size: 9px;
+  font-size: 11px;
 }
 .day-free {
   margin: 22px 0;
@@ -2922,7 +2937,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 8px;
   text-align: left;
   padding: 0;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.8;
   flex: 1;
 }
@@ -2945,7 +2960,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 17px 0 24px;
 }
 .inline-add > input {
-  font-size: 11px;
+  font-size: 14px;
   padding: 9px 10px;
   min-height: 35px;
 }
@@ -2962,19 +2977,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--accent);
 }
 .day-notes {
-  font-size: 11px;
+  font-size: 14px;
   margin-top: 25px;
   margin-bottom: 11px;
 }
 .day-notes > textarea {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.9;
 }
 .autosave {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 8px;
+  font-size: 10px;
   color: var(--subtle);
 }
 .compact-field {
@@ -2982,12 +2997,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-direction: row;
   align-items: center;
   gap: 13px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .compact-field > select {
   width: 200px;
   max-width: 100%;
-  font-size: 12px;
+  font-size: 15px;
   min-height: 38px;
   padding: 8px 10px;
   background: var(--surface);
@@ -3007,11 +3022,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 7px;
 }
 .discover-banner h2 {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 650;
 }
 .discover-banner p {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.9;
   margin-top: 10px;
@@ -3019,7 +3034,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .discover-banner > .text-link {
   white-space: nowrap;
-  font-size: 10px;
+  font-size: 12px;
 }
 .discover-grid {
   display: grid;
@@ -3062,17 +3077,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   fill-opacity: 0.15;
 }
 .recommendation > .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
 }
 .recommendation > h3 {
-  font-size: 19px;
+  font-size: 21px;
   line-height: 1.5;
   font-weight: 650;
   letter-spacing: -0.5px;
   margin-bottom: 12px;
 }
 .recommendation > p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--muted);
   margin-bottom: 20px;
@@ -3085,11 +3100,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-top: 5px;
 }
 .recommendation-links .text-link {
-  font-size: 9px;
+  font-size: 11px;
 }
 .recommendation > .button {
   margin-top: 23px;
-  font-size: 10px;
+  font-size: 12px;
   min-height: 37px;
 }
 .discover-day-picker {
@@ -3107,17 +3122,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 11px;
   align-items: center;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
 }
 .discover-day-picker select {
   min-height: 33px;
   padding: 6px 9px;
-  font-size: 11px;
+  font-size: 14px;
   width: auto;
 }
 .discover-day-picker > .input-hint {
-  font-size: 10px;
+  font-size: 12px;
 }
 .booking-list {
   display: flex;
@@ -3146,23 +3161,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   min-width: 0;
 }
 .booking h3 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 650;
   line-height: 1.5;
 }
 .booking p {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.9;
   color: var(--muted);
   margin-top: 7px;
   white-space: pre-wrap;
 }
 .booking .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   margin-bottom: 5px;
 }
 .booking .text-link {
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 10px;
 }
 .booking-amount {
@@ -3173,13 +3188,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .booking-amount > strong {
   font-family: var(--sans);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 650;
   letter-spacing: -0.6px;
   white-space: nowrap;
 }
 .booking-amount > span {
-  font-size: 9px;
+  font-size: 11px;
   padding: 3px 7px;
   border-radius: 3px;
 }
@@ -3206,11 +3221,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 7px;
 }
 .booking-search h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 650;
 }
 .booking-search p {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 8px;
 }
@@ -3221,7 +3236,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: flex-start;
 }
 .booking-search .text-link {
-  font-size: 10px;
+  font-size: 12px;
 }
 .checklist-summary {
   display: flex;
@@ -3241,13 +3256,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 650;
 }
 .checklist-summary p {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 8px;
 }
 .checklist-summary > strong {
   font-family: var(--sans);
-  font-size: 31px;
+  font-size: 34px;
   font-weight: 500;
   margin-left: auto;
   color: var(--accent);
@@ -3272,7 +3287,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 0;
   flex: 1;
   text-align: left;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.8;
 }
 .task-check {
@@ -3307,7 +3322,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .add-task > .button {
   height: 43px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .mobile-menu,
 .sidebar-backdrop {
@@ -3369,10 +3384,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 68px;
   }
   .trip-hero p {
-    font-size: 13px;
+    font-size: 16px;
   }
   .trip-hero-meta {
-    font-size: 11px;
+    font-size: 14px;
   }
   .overview-main {
     gap: 28px;
@@ -3381,22 +3396,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 29px;
   }
   .section-heading h2 {
-    font-size: 21px;
+    font-size: 23px;
   }
   .overview-money strong {
     font-size: 34px;
   }
   .overview-money > div > span {
-    font-size: 12px;
+    font-size: 15px;
   }
   .mini-route > div {
     padding: 18px 0;
   }
   .mini-route strong {
-    font-size: 16px;
+    font-size: 18px;
   }
   .mini-route small {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 @media (max-width: 1200px) {
@@ -3425,7 +3440,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 61px;
   }
   .landing-copy > p {
-    font-size: 13px;
+    font-size: 16px;
   }
   .travel-collage {
     height: 430px;
@@ -3461,10 +3476,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 14px;
   }
   .collage-ticket > span:nth-child(2) {
-    font-size: 8px;
+    font-size: 10px;
   }
   .collage-ticket strong {
-    font-size: 10px;
+    font-size: 12px;
   }
   .collage-caption {
     left: 74px;
@@ -3483,7 +3498,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 12px;
   }
   .landing-benefits > span {
-    font-size: 10px;
+    font-size: 12px;
     gap: 8px;
   }
   .how-grid > article {
@@ -3496,14 +3511,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 285px;
   }
   .destination-card h3 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .destination-card > div {
     left: 17px;
     right: 17px;
   }
   .destination-card > div > span {
-    font-size: 8px;
+    font-size: 10px;
   }
   .landing-quote {
     padding: 45px 50px;
@@ -3523,13 +3538,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 29px;
   }
   .onboard-form > h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .onboard-form-actions {
     gap: 10px;
   }
   .onboard-form-actions > .primary {
-    font-size: 10px;
+    font-size: 12px;
     padding-left: 13px;
     padding-right: 13px;
   }
@@ -3563,7 +3578,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 30px 28px 0;
   }
   .workspace-heading h1 {
-    font-size: 27px;
+    font-size: 30px;
   }
   .sidebar .brand-mark {
     width: 34px;
@@ -3576,11 +3591,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 5px;
   }
   .sidebar nav > button {
-    font-size: 11px;
+    font-size: 14px;
     gap: 10px;
   }
   .more-items > button {
-    font-size: 10px;
+    font-size: 12px;
     gap: 10px;
   }
   .sidebar-account small {
@@ -3602,10 +3617,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 25px;
   }
   .overview-money strong {
-    font-size: 25px;
+    font-size: 28px;
   }
   .overview-money > div > span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .section-heading h2 {
     font-size: 17px;
@@ -3620,19 +3635,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .budget-row {
     grid-template-columns: minmax(120px, 1fr) 108px 27px;
     gap: 10px;
-    font-size: 11px;
+    font-size: 14px;
   }
   .budget-breakdown .section-heading h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .scenario {
     padding: 20px;
   }
   .scenario > strong {
-    font-size: 25px;
+    font-size: 28px;
   }
   .scenario > p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .route-layout {
     grid-template-columns: minmax(0, 1fr) 225px;
@@ -3646,20 +3661,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-direction: column;
   }
   .route-card-main h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .calendar-layout {
     grid-template-columns: minmax(0, 1fr) 250px;
     gap: 20px;
   }
   .calendar-toolbar h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .calendar-panel {
     padding: 17px;
   }
   .calendar-toolbar .text-link {
-    font-size: 8px;
+    font-size: 10px;
     margin-right: 4px;
   }
   .calendar-day,
@@ -3673,7 +3688,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 6px;
   }
   .day-panel > h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .recommendation {
     padding: 22px;
@@ -3685,7 +3700,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 13px;
   }
   .recommendation-links .text-link {
-    font-size: 8px;
+    font-size: 10px;
   }
   .discover-grid {
     gap: 17px;
@@ -3703,10 +3718,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 17px;
   }
   .trip-card-body h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .trip-meta {
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 @media (max-width: 1000px) {
@@ -3717,13 +3732,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   .landing-header > nav {
     gap: 20px;
-    font-size: 11px;
+    font-size: 14px;
   }
   .landing-header > div {
     gap: 12px;
   }
   .landing-header .compact-button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 10px 12px;
   }
   .landing > main {
@@ -3734,7 +3749,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     letter-spacing: -1px;
   }
   .landing-copy > p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .landing-hero {
     min-height: 560px;
@@ -3746,7 +3761,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 19px;
   }
   .button.large {
-    font-size: 12px;
+    font-size: 15px;
     padding: 15px 19px;
     min-height: 48px;
   }
@@ -3755,7 +3770,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-left: 11px;
   }
   .hero-reassurance {
-    font-size: 9px;
+    font-size: 11px;
   }
   .landing-little-note {
     letter-spacing: 1px;
@@ -3820,7 +3835,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 7px;
   }
   .collage-ticket strong {
-    font-size: 9px;
+    font-size: 11px;
   }
   .collage-ticket > svg {
     width: 14px;
@@ -3835,7 +3850,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 34px;
   }
   .landing-benefits > span {
-    font-size: 9px;
+    font-size: 11px;
     gap: 7px;
   }
   .landing-benefits svg {
@@ -3846,7 +3861,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 37px;
   }
   .landing-section-top > p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .how-section,
   .destinations-section {
@@ -3856,16 +3871,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 25px 22px;
   }
   .how-grid h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .how-grid p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .destination-card {
     height: 260px;
   }
   .destination-card h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .destination-card > div > span {
     font-size: 7px;
@@ -3895,7 +3910,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 33px;
   }
   .faq-section summary {
-    font-size: 12px;
+    font-size: 15px;
   }
   .landing-footer {
     margin: 0 30px;
@@ -3914,24 +3929,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 26px;
   }
   .onboard-form > h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .onboard-form > .muted {
-    font-size: 11px;
+    font-size: 14px;
   }
   .onboard-counters {
     gap: 13px;
   }
   .onboard-counters label {
-    font-size: 10px;
+    font-size: 12px;
   }
   .onboard-form-actions > .button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 10px 12px;
     gap: 6px;
   }
   .onboard-intro > p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .onboard-preview {
     max-width: 260px;
@@ -3977,18 +3992,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 32px;
   }
   .sidebar .brand > span:last-child {
-    font-size: 29px;
+    font-size: 32px;
   }
   .sidebar .brand small {
     font-size: 4.5px;
   }
   .sidebar nav > button {
-    font-size: 10px;
+    font-size: 12px;
     gap: 10px;
     padding: 12px;
   }
   .more-items > button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 12px;
     gap: 10px;
   }
@@ -4023,28 +4038,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 12px;
   }
   .save-status {
-    font-size: 8px;
+    font-size: 10px;
   }
   .edit-trip {
     padding-left: 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .breadcrumb {
-    font-size: 9px;
+    font-size: 11px;
     gap: 8px;
   }
   .workspace-heading h1 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .workspace-heading p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .destination-pill {
     font-size: 15px;
     padding: 7px 9px;
   }
   .destination-pill > span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .trip-hero {
     height: 255px;
@@ -4056,10 +4071,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 25px;
   }
   .trip-hero p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .trip-hero-meta {
-    font-size: 9px;
+    font-size: 11px;
   }
   .trip-hero > small {
     font-size: 7px;
@@ -4080,13 +4095,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 14px;
   }
   .next-step-strip h3 {
-    font-size: 13px;
+    font-size: 16px;
   }
   .next-step-strip p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .next-step-strip > .text-link {
-    font-size: 10px;
+    font-size: 12px;
   }
   .route-layout {
     grid-template-columns: 1fr;
@@ -4098,7 +4113,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-direction: row;
   }
   .route-card-main h2 {
-    font-size: 25px;
+    font-size: 28px;
   }
   .budget-layout {
     grid-template-columns: 1fr;
@@ -4117,11 +4132,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     justify-content: center;
   }
   .budget-tip h3 {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.7;
   }
   .budget-tip p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .scenario-grid {
     gap: 13px;
@@ -4130,23 +4145,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 17px;
   }
   .scenario > div:first-child {
-    font-size: 12px;
+    font-size: 15px;
     margin-bottom: 17px;
   }
   .scenario > strong {
-    font-size: 22px;
+    font-size: 24px;
   }
   .scenario > p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .scenario > small {
-    font-size: 8px;
+    font-size: 10px;
   }
   .budget-row {
     grid-template-columns: minmax(150px, 1fr) 130px 30px;
   }
   .budget-breakdown .section-heading h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .calendar-layout {
     grid-template-columns: 1fr;
@@ -4156,25 +4171,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     min-height: 95px;
   }
   .calendar-day > small {
-    font-size: 8px;
+    font-size: 10px;
   }
   .calendar-day > small.flight-event {
     font-size: 7px;
   }
   .calendar-toolbar h2 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .calendar-toolbar .text-link {
-    font-size: 10px;
+    font-size: 12px;
   }
   .day-panel {
     padding: 25px;
   }
   .day-panel > h2 {
-    font-size: 25px;
+    font-size: 28px;
   }
   .day-notes > textarea {
-    font-size: 12px;
+    font-size: 15px;
   }
   .discover-grid {
     grid-template-columns: 1fr;
@@ -4186,16 +4201,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 18px;
   }
   .recommendation > h3 {
-    font-size: 21px;
+    font-size: 23px;
   }
   .recommendation > p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .recommendation-links .text-link {
-    font-size: 11px;
+    font-size: 14px;
   }
   .recommendation > .button {
-    font-size: 11px;
+    font-size: 14px;
     width: auto;
     align-self: flex-end;
     margin-top: 0;
@@ -4211,10 +4226,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 15px;
   }
   .discover-banner h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .discover-banner p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .discover-day-picker {
     flex-direction: column;
@@ -4225,7 +4240,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 20px;
   }
   .booking h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .booking-amount > strong {
     font-size: 17px;
@@ -4247,22 +4262,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 12px 20px;
   }
   .checklist-summary h2 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .checklist-summary > strong {
-    font-size: 27px;
+    font-size: 30px;
   }
   .checklist-summary p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .checklist-item > button:first-child {
-    font-size: 12px;
+    font-size: 15px;
   }
   .add-task {
     gap: 15px;
   }
   .add-task > .button {
-    font-size: 10px;
+    font-size: 12px;
     padding-left: 13px;
     padding-right: 13px;
   }
@@ -4274,7 +4289,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 15px;
   }
   .landing-header .brand > span:last-child {
-    font-size: 29px;
+    font-size: 32px;
   }
   .landing-header .brand-mark {
     width: 35px;
@@ -4287,13 +4302,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 15px;
   }
   .landing-header .compact-button {
-    font-size: 9px;
+    font-size: 11px;
     gap: 6px;
     padding: 9px 10px;
     min-height: 34px;
   }
   .landing-header .login-link {
-    font-size: 11px;
+    font-size: 14px;
   }
   .landing > main {
     padding: 0 23px;
@@ -4311,7 +4326,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 66px;
   }
   .landing-copy > p {
-    font-size: 14px;
+    font-size: 16px;
     margin: 24px 0;
   }
   .hero-tag {
@@ -4323,13 +4338,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 41px;
   }
   .hero-reassurance {
-    font-size: 10px;
+    font-size: 12px;
   }
   .landing-little-note {
     display: none;
   }
   .button.large {
-    font-size: 13px;
+    font-size: 16px;
     padding: 15px 21px;
     min-height: 51px;
   }
@@ -4364,7 +4379,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     top: 14px;
   }
   .travel-print > span {
-    font-size: 8px;
+    font-size: 10px;
   }
   .collage-ticket {
     width: 221px;
@@ -4373,10 +4388,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 14px;
   }
   .collage-ticket > span:nth-child(2) {
-    font-size: 8px;
+    font-size: 10px;
   }
   .collage-ticket strong {
-    font-size: 10px;
+    font-size: 12px;
   }
   .collage-caption {
     left: 80px;
@@ -4396,7 +4411,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
   }
   .landing-benefits > span {
-    font-size: 10px;
+    font-size: 12px;
     gap: 8px;
   }
   .landing-benefits svg {
@@ -4412,7 +4427,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 38px;
   }
   .landing-section-top > p {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.9;
     margin-top: 3px;
   }
@@ -4439,11 +4454,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
   }
   .how-grid h3 {
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 9px;
   }
   .how-grid p {
-    font-size: 12px;
+    font-size: 15px;
     max-width: 400px;
   }
   .how-grid small {
@@ -4460,7 +4475,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 23px;
   }
   .destination-card > div > span {
-    font-size: 8px;
+    font-size: 10px;
   }
   .landing-quote {
     padding: 33px 28px;
@@ -4478,14 +4493,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 1.25;
   }
   .landing-quote p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .landing-quote .eyebrow {
     font-size: 6px;
     letter-spacing: 1.3px;
   }
   .landing-quote .button {
-    font-size: 11px;
+    font-size: 14px;
     padding: 11px 14px;
     min-height: 39px;
   }
@@ -4505,10 +4520,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
   }
   .faq-section summary {
-    font-size: 12px;
+    font-size: 15px;
   }
   .faq-section details p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .landing-footer {
     margin: 0 23px;
@@ -4516,14 +4531,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 26px 0;
   }
   .landing-footer p {
-    font-size: 9px;
+    font-size: 11px;
     max-width: 160px;
   }
   .landing-footer > div:last-child {
-    font-size: 9px;
+    font-size: 11px;
   }
   .landing-footer button {
-    font-size: 9px;
+    font-size: 11px;
   }
   .auth-page {
     grid-template-columns: 1fr;
@@ -4543,10 +4558,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 39px;
   }
   .auth-form-wrap > .muted {
-    font-size: 12px;
+    font-size: 15px;
   }
   .auth-panel > footer {
-    font-size: 9px;
+    font-size: 11px;
   }
   .onboard-page {
     padding: 0 23px;
@@ -4581,7 +4596,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     max-width: 390px;
   }
   .onboard-intro > p {
-    font-size: 12px;
+    font-size: 15px;
     margin-top: 14px;
   }
   .onboard-intro > p > br {
@@ -4594,7 +4609,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-direction: row;
     gap: 22px;
     margin: 24px 0 3px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .onboard-steps > span {
     gap: 8px;
@@ -4607,10 +4622,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 7px;
   }
   .onboard-form > h2 {
-    font-size: 25px;
+    font-size: 28px;
   }
   .onboard-form > .muted {
-    font-size: 12px;
+    font-size: 15px;
     margin-bottom: 28px;
   }
   .onboard-big-icon {
@@ -4619,30 +4634,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 18px;
   }
   .onboard-form form > .button {
-    font-size: 12px;
+    font-size: 15px;
     margin-top: 25px;
   }
   .onboard-form .field {
-    font-size: 12px;
+    font-size: 15px;
   }
   .onboard-counters {
     gap: 17px;
   }
   .onboard-counters label {
-    font-size: 11px;
+    font-size: 14px;
   }
   .onboard-form-actions > .button {
-    font-size: 11px;
+    font-size: 14px;
     padding: 11px 15px;
   }
   .onboard-account-note {
-    font-size: 10px;
+    font-size: 12px;
   }
   .onboard-suggestions > .eyebrow {
     font-size: 7px;
   }
   .onboard-page > footer {
-    font-size: 8px;
+    font-size: 10px;
     padding: 10px 0 25px;
   }
   .my-trips > main {
@@ -4657,7 +4672,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 43px;
   }
   .my-trips-heading p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .my-trip-grid {
     grid-template-columns: 1fr;
@@ -4670,13 +4685,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 21px;
   }
   .trip-card-body h2 {
-    font-size: 19px;
+    font-size: 21px;
   }
   .trip-meta {
-    font-size: 11px;
+    font-size: 14px;
   }
   .trip-card-progress {
-    font-size: 10px;
+    font-size: 12px;
   }
   .sidebar {
     width: 225px;
@@ -4702,30 +4717,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 36px;
   }
   .sidebar .brand > span:last-child {
-    font-size: 32px;
+    font-size: 34px;
   }
   .sidebar .brand small {
     font-size: 5.5px;
   }
   .sidebar nav > button {
-    font-size: 12px;
+    font-size: 15px;
     gap: 12px;
     padding: 13px;
   }
   .more-items > button {
-    font-size: 11px;
+    font-size: 14px;
     gap: 12px;
     padding: 13px;
   }
   .sidebar-label {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 1.4px;
   }
   .sidebar-account small {
-    font-size: 8px;
+    font-size: 10px;
   }
   .sidebar-account strong {
-    font-size: 12px;
+    font-size: 15px;
   }
   .sidebar-account > span {
     width: 32px;
@@ -4748,10 +4763,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 28px 23px 0;
   }
   .workspace-heading h1 {
-    font-size: 27px;
+    font-size: 30px;
   }
   .workspace-heading p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .workspace-heading .eyebrow {
     font-size: 7px;
@@ -4766,10 +4781,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 55px;
   }
   .trip-hero p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .trip-hero-meta {
-    font-size: 10px;
+    font-size: 12px;
   }
   .overview-main {
     grid-template-columns: 1fr 1fr;
@@ -4782,7 +4797,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 23px;
   }
   .overview-money > div > span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .overview-route .mini-route {
     display: flex;
@@ -4791,37 +4806,37 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 21px;
   }
   .section-heading h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .overview-funds .section-heading .eyebrow {
     font-size: 6px;
   }
   .overview-funds .progress-label {
-    font-size: 10px;
+    font-size: 12px;
   }
   .inline-cash {
-    font-size: 10px;
+    font-size: 12px;
   }
   .overview-funds > .input-hint {
-    font-size: 9px;
+    font-size: 11px;
   }
   .overview-funds > .text-link {
-    font-size: 10px;
+    font-size: 12px;
   }
   .mini-route strong {
-    font-size: 13px;
+    font-size: 16px;
   }
   .mini-route small {
-    font-size: 8px;
+    font-size: 10px;
   }
   .mini-route > div > small {
-    font-size: 9px;
+    font-size: 11px;
   }
   .mini-route > div {
     gap: 9px;
   }
   .route-total {
-    font-size: 8px;
+    font-size: 10px;
     gap: 10px;
   }
   .route-total svg {
@@ -4839,19 +4854,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .budget-row {
     grid-template-columns: minmax(115px, 1fr) 100px 27px;
     gap: 8px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .budget-breakdown .section-heading h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .budget-breakdown .section-heading > .text-link {
-    font-size: 8px;
+    font-size: 10px;
   }
   .budget-total {
-    font-size: 11px;
+    font-size: 14px;
   }
   .budget-total > strong {
-    font-size: 22px;
+    font-size: 24px;
   }
   .calendar-layout {
     grid-template-columns: minmax(0, 1fr) 225px;
@@ -4863,10 +4878,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 6px 3px;
   }
   .calendar-toolbar h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .calendar-toolbar .text-link {
-    font-size: 8px;
+    font-size: 10px;
   }
   .calendar-toolbar .icon-button {
     width: 23px;
@@ -4887,7 +4902,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 20px;
   }
   .day-panel > h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .discover-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4900,19 +4915,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 17px;
   }
   .recommendation > p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .recommendation-links {
     flex-wrap: wrap;
     gap: 9px;
   }
   .recommendation-links .text-link {
-    font-size: 9px;
+    font-size: 11px;
   }
   .recommendation > .button {
     margin-top: 20px;
     width: 100%;
-    font-size: 9px;
+    font-size: 11px;
   }
   .recommendation-top > span {
     font-size: 30px;
@@ -4928,7 +4943,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     max-width: 150px;
   }
   .add-task > .button {
-    font-size: 11px;
+    font-size: 14px;
   }
 }
 @media (max-width: 600px) {
@@ -4947,7 +4962,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 8px;
   }
   .landing-header .brand > span:last-child {
-    font-size: 28px;
+    font-size: 30px;
   }
   .landing-header .brand small {
     font-size: 5px;
@@ -4960,7 +4975,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 13px;
   }
   .landing-header .login-link {
-    font-size: 12px;
+    font-size: 15px;
   }
   .landing > main {
     padding: 0 22px;
@@ -4983,15 +4998,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 21px;
   }
   .landing-copy > p {
-    font-size: 13px;
+    font-size: 16px;
     margin: 22px 0 25px;
   }
   .hero-reassurance {
-    font-size: 9px;
+    font-size: 11px;
     margin-top: 14px;
   }
   .landing-copy .button.large {
-    font-size: 12px;
+    font-size: 15px;
     padding: 15px 19px;
     min-height: 48px;
   }
@@ -5032,7 +5047,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 9px;
   }
   .print-japan > small {
-    font-size: 12px;
+    font-size: 15px;
     right: 15px;
     top: 18px;
   }
@@ -5059,7 +5074,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 6.5px;
   }
   .collage-ticket strong {
-    font-size: 8px;
+    font-size: 10px;
   }
   .collage-ticket > i {
     height: 24px;
@@ -5074,7 +5089,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     letter-spacing: 1.2px;
   }
   .collage-spark {
-    font-size: 29px;
+    font-size: 32px;
     right: 6px;
     top: 3px;
   }
@@ -5083,7 +5098,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 24px 0;
   }
   .landing-benefits > span {
-    font-size: 9px;
+    font-size: 11px;
     gap: 7px;
     line-height: 1.8;
   }
@@ -5100,7 +5115,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 1.2;
   }
   .landing-section-top > p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
   }
   .landing-section-top {
@@ -5131,7 +5146,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 9px;
   }
   .how-grid p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
   }
   .destination-cards {
@@ -5158,14 +5173,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 5px;
   }
   .destination-card h3 {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.3;
   }
   .destination-card h3 > svg {
     width: 16px;
   }
   .destinations-section .text-link {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 3px;
   }
   .landing-quote {
@@ -5185,11 +5200,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 34px;
   }
   .landing-quote p {
-    font-size: 12px;
+    font-size: 15px;
     margin: 16px 0 21px;
   }
   .landing-quote .button {
-    font-size: 11px;
+    font-size: 14px;
   }
   .faq-section {
     padding: 47px 0;
@@ -5204,19 +5219,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 12px;
   }
   .faq-section summary {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.8;
   }
   .faq-section details {
     padding: 17px 0;
   }
   .faq-section details p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
     margin-right: 10px;
   }
   .faq-section summary > span {
-    font-size: 20px;
+    font-size: 22px;
   }
   .landing-footer {
     margin: 0 22px;
@@ -5224,20 +5239,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     align-items: flex-start;
   }
   .landing-footer p {
-    font-size: 8px;
+    font-size: 10px;
     max-width: 155px;
     margin-top: 12px;
   }
   .landing-footer > div:last-child {
-    font-size: 8px;
+    font-size: 10px;
     margin-top: 5px;
   }
   .landing-footer button {
-    font-size: 8px;
+    font-size: 10px;
     margin-top: 13px;
   }
   .landing-footer .brand.compact > span:last-child {
-    font-size: 25px;
+    font-size: 28px;
   }
   .landing-footer .brand.compact .brand-mark {
     width: 29px;
@@ -5261,41 +5276,41 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     max-width: 340px;
   }
   .onboard-intro > .text-link {
-    font-size: 10px;
+    font-size: 12px;
     margin-bottom: 24px;
   }
   .onboard-intro > p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
   }
   .onboard-steps {
     gap: 21px;
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 23px;
   }
   .onboard-steps i {
     width: 21px;
     height: 21px;
-    font-size: 8px;
+    font-size: 10px;
   }
   .onboard-form {
     padding: 25px 22px;
   }
   .onboard-form > h2 {
-    font-size: 24px;
+    font-size: 26px;
     letter-spacing: -0.7px;
   }
   .onboard-form .field {
-    font-size: 11px;
+    font-size: 14px;
   }
   .onboard-form .field input,
   .onboard-form .field select {
-    font-size: 12px;
+    font-size: 15px;
     min-height: 44px;
     padding: 11px;
   }
   .onboard-form > .muted {
-    font-size: 11px;
+    font-size: 14px;
     margin-bottom: 26px;
   }
   .onboard-big-icon {
@@ -5304,14 +5319,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 18px;
   }
   .onboard-form form > .button {
-    font-size: 11px;
+    font-size: 14px;
     min-height: 44px;
   }
   .onboard-counters {
     gap: 15px;
   }
   .onboard-counters label {
-    font-size: 10px;
+    font-size: 12px;
     gap: 6px;
   }
   .onboard-counters label svg {
@@ -5321,7 +5336,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 7px 5px;
   }
   .counter > strong {
-    font-size: 20px;
+    font-size: 22px;
   }
   .counter > button {
     width: 25px;
@@ -5332,28 +5347,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 11px;
   }
   .style-options strong {
-    font-size: 11px;
+    font-size: 14px;
   }
   .style-options small {
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1.8;
   }
   .onboard-form-actions > .button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 11px 12px;
   }
   .onboard-form-actions > .primary {
-    font-size: 10px;
+    font-size: 12px;
     white-space: normal;
     text-align: center;
     gap: 7px;
   }
   .onboard-account-note {
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1.9;
   }
   .onboard-suggestions button {
-    font-size: 9px;
+    font-size: 11px;
     padding: 6px 8px;
     gap: 6px;
   }
@@ -5364,19 +5379,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 6px;
   }
   .onboard-form .input-hint {
-    font-size: 10px;
+    font-size: 12px;
   }
   .city-results > button {
-    font-size: 11px;
+    font-size: 14px;
   }
   .city-results small {
-    font-size: 8px;
+    font-size: 10px;
   }
   .auth-panel {
     padding: 25px 24px;
   }
   .auth-panel > header > .text-link {
-    font-size: 11px;
+    font-size: 14px;
   }
   .auth-form-wrap {
     padding: 48px 0;
@@ -5390,23 +5405,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 7px;
   }
   .auth-form-wrap > .muted {
-    font-size: 12px;
+    font-size: 15px;
     margin: 15px 0 29px;
   }
   .auth-form-wrap .field {
-    font-size: 11px;
+    font-size: 14px;
   }
   .auth-form-wrap .field input {
-    font-size: 13px;
+    font-size: 16px;
   }
   .auth-form-wrap .button {
-    font-size: 12px;
+    font-size: 15px;
   }
   .auth-switch {
-    font-size: 11px;
+    font-size: 14px;
   }
   .auth-privacy {
-    font-size: 8px;
+    font-size: 10px;
   }
   .my-trips > main {
     padding: 35px 22px;
@@ -5419,10 +5434,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 7px;
   }
   .my-trips-heading p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .my-trips-heading > .button {
-    font-size: 11px;
+    font-size: 14px;
   }
   .account-name {
     display: none;
@@ -5440,14 +5455,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 20px;
   }
   .trip-card-body h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .trip-meta {
-    font-size: 10px;
+    font-size: 12px;
     gap: 10px 13px;
   }
   .my-trips-note {
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1.9;
   }
   .workspace-topbar {
@@ -5458,7 +5473,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 10px;
   }
   .breadcrumb {
-    font-size: 9px;
+    font-size: 11px;
     gap: 7px;
   }
   .breadcrumb > strong {
@@ -5468,7 +5483,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
   }
   .save-status {
-    font-size: 8px;
+    font-size: 10px;
     gap: 4px;
   }
   .save-status > span {
@@ -5479,7 +5494,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 28px;
   }
   .edit-trip {
-    font-size: 9px;
+    font-size: 11px;
     padding-left: 10px;
     gap: 6px;
   }
@@ -5499,12 +5514,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
   }
   .workspace-heading h1 {
-    font-size: 25px;
+    font-size: 28px;
     line-height: 1.5;
     letter-spacing: -0.8px;
   }
   .workspace-heading p {
-    font-size: 11px;
+    font-size: 14px;
     margin-top: 7px;
   }
   .workspace-heading .eyebrow {
@@ -5518,7 +5533,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 6px;
   }
   .destination-pill > span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .trip-hero {
     height: 245px;
@@ -5537,11 +5552,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 1.25;
   }
   .trip-hero p {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 7px;
   }
   .trip-hero-meta {
-    font-size: 8px;
+    font-size: 10px;
     gap: 6px;
     margin-top: 16px;
     flex-wrap: wrap;
@@ -5566,28 +5581,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 23px;
   }
   .section-heading h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .overview-money {
     gap: 32px;
     margin: 10px 0 24px;
   }
   .overview-money > div > span {
-    font-size: 10px;
+    font-size: 12px;
     margin-bottom: 7px;
   }
   .overview-money strong {
-    font-size: 27px;
+    font-size: 30px;
     letter-spacing: -0.8px;
   }
   .overview-funds .section-heading .eyebrow {
     font-size: 7px;
   }
   .overview-funds .progress-label {
-    font-size: 10px;
+    font-size: 12px;
   }
   .inline-cash {
-    font-size: 11px;
+    font-size: 14px;
     margin-top: 23px;
   }
   .inline-cash > input {
@@ -5595,10 +5610,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     min-height: 51px;
   }
   .overview-funds > .input-hint {
-    font-size: 10px;
+    font-size: 12px;
   }
   .overview-funds > .text-link {
-    font-size: 11px;
+    font-size: 14px;
   }
   .mini-route > div {
     gap: 12px;
@@ -5608,18 +5623,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 15px;
   }
   .mini-route small {
-    font-size: 10px;
+    font-size: 12px;
   }
   .mini-route > div > small {
-    font-size: 10px;
+    font-size: 12px;
   }
   .mini-route > div > span {
     width: 30px;
     height: 30px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .route-total {
-    font-size: 9px;
+    font-size: 11px;
     gap: 15px;
   }
   .route-total > span > svg {
@@ -5643,16 +5658,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     min-width: 170px;
   }
   .next-step-strip h3 {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.7;
   }
   .next-step-strip p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
     margin-top: 8px;
   }
   .next-step-strip > .text-link {
-    font-size: 11px;
+    font-size: 14px;
     margin-left: 49px;
     margin-top: 4px;
   }
@@ -5671,10 +5686,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 20px;
   }
   .view-toolbar > .subtle {
-    font-size: 11px;
+    font-size: 14px;
   }
   .view-toolbar > .button {
-    font-size: 10px;
+    font-size: 12px;
     min-height: 36px;
     padding: 9px 12px;
     gap: 7px;
@@ -5685,24 +5700,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-wrap: wrap;
   }
   .route-card-index {
-    font-size: 10px;
+    font-size: 12px;
     gap: 2px;
   }
   .route-card-index > svg {
     width: 11px;
   }
   .route-card-main h2 {
-    font-size: 24px;
+    font-size: 26px;
     gap: 13px;
   }
   .route-card-main h2 > span {
-    font-size: 18px;
+    font-size: 20px;
   }
   .route-card-main > .eyebrow {
     font-size: 7px;
   }
   .route-card-main > p {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.8;
     margin-top: 8px;
   }
@@ -5723,20 +5738,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 13px;
   }
   .route-card-bottom > .text-link {
-    font-size: 9px;
+    font-size: 11px;
   }
   .stepper {
     gap: 7px;
   }
   .stepper > span {
-    font-size: 10px;
+    font-size: 12px;
   }
   .stepper > button {
     width: 23px;
     height: 23px;
   }
   .stepper strong {
-    font-size: 11px;
+    font-size: 14px;
   }
   .scenario-grid {
     grid-template-columns: 1fr;
@@ -5747,21 +5762,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 20px;
   }
   .scenario > div:first-child {
-    font-size: 13px;
+    font-size: 16px;
     margin-bottom: 14px;
   }
   .scenario > strong {
-    font-size: 28px;
+    font-size: 30px;
   }
   .scenario > p {
-    font-size: 11px;
+    font-size: 14px;
     margin-top: 7px;
   }
   .scenario > .progress {
     margin: 20px 0 10px;
   }
   .scenario > small {
-    font-size: 9px;
+    font-size: 11px;
   }
   .budget-layout {
     grid-template-columns: 1fr;
@@ -5778,7 +5793,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 17px;
   }
   .budget-breakdown .section-heading > .text-link {
-    font-size: 9px;
+    font-size: 11px;
     max-width: 100px;
     line-height: 1.8;
     text-align: right;
@@ -5789,12 +5804,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 2px;
   }
   .budget-breakdown > .input-hint {
-    font-size: 10px;
+    font-size: 12px;
   }
   .budget-row {
     grid-template-columns: minmax(130px, 1fr) 105px 26px;
     gap: 8px;
-    font-size: 11px;
+    font-size: 14px;
     padding: 15px 0;
   }
   .budget-row > span {
@@ -5807,25 +5822,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 5px;
   }
   .budget-row > div > span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .budget-row input {
-    font-size: 12px;
+    font-size: 15px;
     padding: 8px 6px;
     min-height: 35px;
   }
   .budget-row > small {
-    font-size: 9px;
+    font-size: 11px;
   }
   .budget-total {
-    font-size: 11px;
+    font-size: 14px;
     gap: 15px;
   }
   .budget-total > strong {
-    font-size: 25px;
+    font-size: 28px;
   }
   .footnote {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.9;
   }
   .budget-side {
@@ -5838,17 +5853,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 34px;
   }
   .budget-goal .progress-label {
-    font-size: 11px;
+    font-size: 14px;
   }
   .budget-goal > .field {
-    font-size: 12px;
+    font-size: 15px;
   }
   .budget-goal > .field > input {
-    font-size: 16px;
+    font-size: 18px;
     min-height: 47px;
   }
   .budget-goal > .input-hint {
-    font-size: 11px;
+    font-size: 14px;
   }
   .budget-tip {
     border: 0;
@@ -5858,15 +5873,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 13px;
   }
   .budget-tip h3 {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.8;
   }
   .budget-tip p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
   }
   .legend {
-    font-size: 9px;
+    font-size: 11px;
     gap: 15px;
     flex-wrap: wrap;
   }
@@ -5915,7 +5930,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 6px 2px;
   }
   .calendar-day > span:first-child {
-    font-size: 10px;
+    font-size: 12px;
     padding: 0 3px;
     margin-bottom: 5px;
   }
@@ -5936,7 +5951,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 1px 3px;
   }
   .calendar-note {
-    font-size: 9px;
+    font-size: 11px;
     gap: 7px;
     line-height: 1.9;
     margin-top: 17px;
@@ -5945,44 +5960,44 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 25px;
   }
   .day-panel > h2 {
-    font-size: 26px;
+    font-size: 28px;
   }
   .day-panel > .eyebrow {
     font-size: 7px;
   }
   .day-weekday {
-    font-size: 11px;
+    font-size: 14px;
   }
   .day-city {
-    font-size: 13px;
+    font-size: 16px;
     padding-top: 23px;
   }
   .day-city > small {
-    font-size: 10px;
+    font-size: 12px;
   }
   .day-activity > button:first-child {
-    font-size: 12px;
+    font-size: 15px;
   }
   .inline-add > input {
-    font-size: 12px;
+    font-size: 15px;
     min-height: 40px;
   }
   .day-notes {
-    font-size: 12px;
+    font-size: 15px;
   }
   .day-notes > textarea {
-    font-size: 12px;
+    font-size: 15px;
   }
   .autosave {
-    font-size: 9px;
+    font-size: 11px;
   }
   .compact-field {
-    font-size: 10px;
+    font-size: 12px;
     gap: 9px;
   }
   .compact-field > select {
     width: 150px;
-    font-size: 11px;
+    font-size: 14px;
     min-height: 36px;
   }
   .discover-banner {
@@ -5992,13 +6007,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 16px;
   }
   .discover-banner h2 {
-    font-size: 25px;
+    font-size: 28px;
   }
   .discover-banner p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .discover-banner > .text-link {
-    font-size: 11px;
+    font-size: 14px;
     max-width: none;
   }
   .discover-grid {
@@ -6015,14 +6030,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 36px;
   }
   .recommendation > .eyebrow {
-    font-size: 8px;
+    font-size: 10px;
   }
   .recommendation > h3 {
-    font-size: 21px;
+    font-size: 23px;
     margin-bottom: 13px;
   }
   .recommendation > p {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.9;
   }
   .recommendation-links {
@@ -6030,10 +6045,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 5px;
   }
   .recommendation-links .text-link {
-    font-size: 11px;
+    font-size: 14px;
   }
   .recommendation > .button {
-    font-size: 11px;
+    font-size: 14px;
     min-height: 39px;
     margin-top: 23px;
   }
@@ -6044,14 +6059,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-direction: column;
   }
   .discover-day-picker > label {
-    font-size: 11px;
+    font-size: 14px;
     gap: 10px;
   }
   .discover-day-picker > .input-hint {
-    font-size: 10px;
+    font-size: 12px;
   }
   .discover-day-picker select {
-    font-size: 10px;
+    font-size: 12px;
   }
   .booking {
     padding: 20px 17px;
@@ -6073,7 +6088,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 7px;
   }
   .booking p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .booking > div:first-of-type {
     min-width: 180px;
@@ -6084,7 +6099,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 5px;
   }
   .booking-amount > strong {
-    font-size: 21px;
+    font-size: 23px;
   }
   .booking > .icon-button {
     width: 28px;
@@ -6092,10 +6107,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 5px;
   }
   .booking-amount > span {
-    font-size: 8px;
+    font-size: 10px;
   }
   .booking .text-link {
-    font-size: 10px;
+    font-size: 12px;
   }
   .booking-search {
     padding: 24px;
@@ -6105,13 +6120,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 7px;
   }
   .booking-search h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .booking-search p {
-    font-size: 11px;
+    font-size: 14px;
   }
   .booking-search .text-link {
-    font-size: 10px;
+    font-size: 12px;
   }
   .checklist-summary {
     padding: 23px 21px;
@@ -6131,11 +6146,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 6px;
   }
   .checklist-summary h2 {
-    font-size: 21px;
+    font-size: 23px;
     line-height: 1.5;
   }
   .checklist-summary p {
-    font-size: 11px;
+    font-size: 14px;
     margin-top: 9px;
     line-height: 1.9;
   }
@@ -6151,7 +6166,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 10px;
   }
   .checklist-item > button:first-child {
-    font-size: 12px;
+    font-size: 15px;
     gap: 11px;
     align-items: flex-start;
     line-height: 1.9;
@@ -6170,43 +6185,43 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 17px;
   }
   .add-task > .field {
-    font-size: 12px;
+    font-size: 15px;
   }
   .add-task input {
-    font-size: 12px;
+    font-size: 15px;
   }
   .add-task > .button {
-    font-size: 11px;
+    font-size: 14px;
   }
   .modal-body {
     padding: 26px 23px;
   }
   .modal-heading h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .modal-heading .eyebrow {
     font-size: 7px;
   }
   .modal-description {
-    font-size: 11px;
+    font-size: 14px;
   }
   .field {
-    font-size: 11px;
+    font-size: 14px;
     gap: 8px;
     margin-bottom: 19px;
   }
   .field > .optional {
-    font-size: 9px;
+    font-size: 11px;
   }
   .field input,
   .field select,
   .field textarea {
-    font-size: 12px;
+    font-size: 15px;
     padding: 11px 12px;
   }
   .field input::placeholder,
   .field textarea::placeholder {
-    font-size: 11px;
+    font-size: 14px;
   }
   .form-grid {
     gap: 0 13px;
@@ -6215,12 +6230,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 10px;
   }
   .modal-actions > .button {
-    font-size: 11px;
+    font-size: 14px;
     padding: 11px 14px;
     white-space: normal;
   }
   .checkbox-label {
-    font-size: 11px;
+    font-size: 14px;
     align-items: flex-start;
     gap: 9px;
   }
@@ -6228,14 +6243,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 2px;
   }
   .modal .input-hint {
-    font-size: 10px;
+    font-size: 12px;
   }
   .full-loading h1 {
-    font-size: 25px;
+    font-size: 28px;
     line-height: 1.6;
   }
   .full-loading p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
     max-width: 290px;
   }
@@ -6251,7 +6266,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transform-origin: 4px 49px;
   }
   .toast {
-    font-size: 11px;
+    font-size: 14px;
     padding: 14px 15px;
     gap: 9px;
     bottom: 18px;
@@ -6264,12 +6279,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 1.5;
   }
   .empty p {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.9;
     margin-top: 15px;
   }
   .empty .button {
-    font-size: 11px;
+    font-size: 14px;
     white-space: normal;
   }
   .empty-icon {
@@ -6278,13 +6293,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 23px;
   }
   .account-note {
-    font-size: 11px;
+    font-size: 14px;
   }
   .flight-settings summary {
-    font-size: 11px;
+    font-size: 14px;
   }
   .flight-settings summary > .optional {
-    font-size: 9px;
+    font-size: 11px;
   }
   .workspace-topbar .save-status {
     display: none;
@@ -6307,7 +6322,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     letter-spacing: 1.1px;
   }
   .landing-copy > p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .travel-collage {
     transform: scale(0.9);
@@ -6322,22 +6337,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 0;
   }
   .landing-benefits > span {
-    font-size: 8px;
+    font-size: 10px;
   }
   .landing-section-top h2 {
-    font-size: 32px;
+    font-size: 34px;
   }
   .destination-card {
     height: 215px;
   }
   .destination-card h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .destination-card > div > span {
     font-size: 5.5px;
   }
   .landing-quote h2 {
-    font-size: 31px;
+    font-size: 34px;
   }
   .onboard-page {
     padding: 0 18px;
@@ -6349,10 +6364,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 35px;
   }
   .onboard-form > h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .onboard-form-actions > .primary {
-    font-size: 9px;
+    font-size: 11px;
   }
   .auth-form-wrap > h1 {
     font-size: 34px;
@@ -6365,7 +6380,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 0 16px;
   }
   .breadcrumb {
-    font-size: 8px;
+    font-size: 10px;
   }
   .overview-main .panel {
     padding: 21px;
@@ -6374,10 +6389,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 25px;
   }
   .overview-money strong {
-    font-size: 24px;
+    font-size: 26px;
   }
   .overview-money > div > span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .trip-hero h2 {
     font-size: 42px;
@@ -6393,21 +6408,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 10px;
   }
   .route-card-index {
-    font-size: 9px;
+    font-size: 11px;
   }
   .budget-row {
     grid-template-columns: minmax(110px, 1fr) 98px 24px;
-    font-size: 10px;
+    font-size: 12px;
     gap: 7px;
   }
   .budget-row > small {
-    font-size: 8px;
+    font-size: 10px;
   }
   .budget-breakdown {
     padding: 22px 15px;
   }
   .budget-breakdown .section-heading h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .calendar-day,
   .calendar-empty {
@@ -6423,19 +6438,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 130px;
   }
   .compact-field {
-    font-size: 9px;
+    font-size: 11px;
   }
   .view-toolbar > .button {
-    font-size: 9px;
+    font-size: 11px;
   }
   .save-error {
-    font-size: 10px;
+    font-size: 12px;
   }
   .modal-body {
     padding: 24px 20px;
   }
   .modal-heading h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .form-grid {
     gap: 0 11px;
@@ -6454,6 +6469,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: clamp(38px, 10.8vw, 48px);
   }
   .headline-star {
-    font-size: 28px;
+    font-size: 30px;
   }
 }

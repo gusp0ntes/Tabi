@@ -184,7 +184,7 @@ export function resizeRoute(trip: Trip, days: number) {
   }
   return withRoute(trip, route);
 }
-export function tripData(trip: Trip): TripData {
+export function tripData(trip: TripData): TripData {
   const {
     title,
     travelers,

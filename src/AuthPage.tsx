@@ -9,7 +9,9 @@ export default function AuthPage({ register = false }: { register?: boolean }) {
   const [params] = useSearchParams();
   const requested = params.get("next") || "/app";
   const next =
-    requested.startsWith("/app") || requested.startsWith("/nova-viagem")
+    /^\/(?:app(?:\/|$)|nova-viagem(?:\?|$)|convite\/[A-Za-z0-9_-]{43}$)/.test(
+      requested,
+    )
       ? requested
       : "/app";
   const [name, setName] = useState("");

@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import { rateLimit } from "express-rate-limit";
 import { MongoServerError, ObjectId } from "mongodb";
-import type { Db } from "mongodb";
+import type { Db, Filter } from "mongodb";
 import { ZodError } from "zod";
 import {
   createTripSchema,
@@ -13,7 +13,8 @@ import {
   registerSchema,
   updateTripSchema,
 } from "../shared/schema.js";
-import { seedTrip } from "../shared/planner.js";
+import { seedTrip, tripData } from "../shared/planner.js";
+import type { SharedTrip, TripSharing } from "../shared/schema.js";
 import { collections } from "./database.js";
 import type { UserDocument, TripDocument } from "./database.js";
 import {
@@ -47,15 +48,36 @@ const publicUser = (u: UserDocument) => ({
   name: u.name,
   email: u.email,
 });
-const publicTrip = (t: TripDocument) => {
-  const { _id, ownerId: _, createdAt, updatedAt, ...data } = t;
+const accountTrip = (t: TripDocument, userId: ObjectId) => {
   return {
-    ...data,
-    id: _id.toHexString(),
-    createdAt: createdAt.toISOString(),
-    updatedAt: updatedAt.toISOString(),
+    ...tripData(t),
+    destination: t.destination,
+    revision: t.revision,
+    id: t._id.toHexString(),
+    createdAt: t.createdAt.toISOString(),
+    updatedAt: t.updatedAt.toISOString(),
+    role: t.ownerId.equals(userId) ? "owner" : "editor",
+    participantCount: 1 + (t.memberIds?.length || 0),
   };
 };
+// Deliberate allowlist: private notes, money, reservations and account data never leave here.
+const sharedTrip = (t: TripDocument): SharedTrip => ({
+  title: t.title,
+  destination: t.destination,
+  travelers: t.travelers,
+  days: t.days,
+  startDate: t.startDate,
+  outboundDate: t.outboundDate,
+  homeArrivalDate: t.homeArrivalDate,
+  route: t.route,
+  activities: t.activities.map(({ id, name, day, city }) => ({
+    id,
+    name,
+    day,
+    city,
+  })),
+  updatedAt: t.updatedAt.toISOString(),
+});
 export function makeApp(db: Db, config: AppConfig) {
   const app = express();
   const c = collections(db);
@@ -166,23 +188,70 @@ export function makeApp(db: Db, config: AppConfig) {
     });
     res.cookie(cookieName, token, cookieOptions);
   };
-  const tripQuery = (req: Request) => {
+  const tripQuery = (req: Request, ownerOnly = false): Filter<TripDocument> => {
     const id = String(req.params.id);
     if (!/^[a-f\d]{24}$/i.test(id))
       throw new HttpError(404, "Viagem não encontrada.");
-    return { _id: new ObjectId(id), ownerId: actors.get(req)!._id };
+    const userId = actors.get(req)!._id;
+    return ownerOnly
+      ? { _id: new ObjectId(id), ownerId: userId }
+      : {
+          _id: new ObjectId(id),
+          $or: [{ ownerId: userId }, { memberIds: userId }],
+        };
+  };
+  const linkToken = (req: Request) => {
+    const token = String(req.params.token);
+    if (!/^[A-Za-z0-9_-]{43}$/.test(token))
+      throw new HttpError(404, "Este link não está disponível.");
+    return token;
+  };
+  const ownerTrip = async (req: Request) => {
+    const trip = await c.trips.findOne(tripQuery(req, true));
+    if (!trip)
+      throw new HttpError(
+        404,
+        "Viagem não encontrada ou acesso não permitido.",
+      );
+    return trip;
+  };
+  const sharingState = async (trip: TripDocument): Promise<TripSharing> => {
+    const people = await c.users
+      .find(
+        { _id: { $in: [trip.ownerId, ...(trip.memberIds || [])] } },
+        { projection: { name: 1 } },
+      )
+      .toArray();
+    const invite = trip.invite;
+    return {
+      publicPath: trip.publicShare ? `/viagem/${trip.publicShare.token}` : null,
+      invite:
+        invite && !invite.acceptedBy && invite.expiresAt > new Date()
+          ? {
+              path: `/convite/${invite.token}`,
+              expiresAt: invite.expiresAt.toISOString(),
+            }
+          : null,
+      members: people
+        .map<TripSharing["members"][number]>((person) => ({
+          id: person._id.toHexString(),
+          name: person.name,
+          role: person._id.equals(trip.ownerId) ? "owner" : "editor",
+        }))
+        .sort(
+          (a, b) => Number(b.role === "owner") - Number(a.role === "owner"),
+        ),
+    };
   };
   app.get("/api/health", async (_req, res) => {
     try {
       await db.command({ ping: 1 });
       res.json({ status: "ok" });
     } catch {
-      res
-        .status(503)
-        .json({
-          status: "unavailable",
-          message: "O banco de dados está indisponível.",
-        });
+      res.status(503).json({
+        status: "unavailable",
+        message: "O banco de dados está indisponível.",
+      });
     }
   });
   app.get("/api/destinations/countries", (_req, res) =>
@@ -277,12 +346,13 @@ export function makeApp(db: Db, config: AppConfig) {
     res.status(204).end();
   });
   app.get("/api/trips", auth, async (req, res) => {
+    const userId = actors.get(req)!._id;
     const trips = await c.trips
-      .find({ ownerId: actors.get(req)!._id })
+      .find({ $or: [{ ownerId: userId }, { memberIds: userId }] })
       .sort({ updatedAt: -1 })
       .limit(100)
       .toArray();
-    res.json({ trips: trips.map(publicTrip) });
+    res.json({ trips: trips.map((trip) => accountTrip(trip, userId)) });
   });
   app.post("/api/trips", auth, async (req, res) => {
     const input = createTripSchema.parse(req.body);
@@ -310,12 +380,12 @@ export function makeApp(db: Db, config: AppConfig) {
       updatedAt: now,
     };
     await c.trips.insertOne(trip);
-    res.status(201).json({ trip: publicTrip(trip) });
+    res.status(201).json({ trip: accountTrip(trip, actors.get(req)!._id) });
   });
   app.get("/api/trips/:id", auth, async (req, res) => {
     const trip = await c.trips.findOne(tripQuery(req));
     if (!trip) throw new HttpError(404, "Viagem não encontrada.");
-    res.json({ trip: publicTrip(trip) });
+    res.json({ trip: accountTrip(trip, actors.get(req)!._id) });
   });
   app.put("/api/trips/:id", auth, async (req, res) => {
     const query = tripQuery(req);
@@ -332,13 +402,13 @@ export function makeApp(db: Db, config: AppConfig) {
         throw new HttpError(404, "Viagem não encontrada.");
       throw new HttpError(
         409,
-        "Essa viagem foi alterada em outra aba. Recarregue antes de continuar para preservar as duas versões.",
+        "Essa viagem foi alterada por outra pessoa ou aba. Recarregue antes de continuar para preservar as duas versões.",
       );
     }
-    res.json({ trip: publicTrip(trip) });
+    res.json({ trip: accountTrip(trip, actors.get(req)!._id) });
   });
   app.delete("/api/trips/:id", auth, async (req, res) => {
-    const result = await c.trips.deleteOne(tripQuery(req));
+    const result = await c.trips.deleteOne(tripQuery(req, true));
     if (!result.deletedCount)
       throw new HttpError(404, "Viagem não encontrada.");
     res.status(204).end();
@@ -354,22 +424,147 @@ export function makeApp(db: Db, config: AppConfig) {
       city: stop.city,
     });
   });
+  app.get("/api/trips/:id/sharing", auth, async (req, res) => {
+    res.json({ sharing: await sharingState(await ownerTrip(req)) });
+  });
+  app.post("/api/trips/:id/sharing", auth, async (req, res) => {
+    const trip = await c.trips.findOneAndUpdate(
+      tripQuery(req, true),
+      {
+        $set: { publicShare: { token: sessionToken(), createdAt: new Date() } },
+      },
+      { returnDocument: "after" },
+    );
+    if (!trip) throw new HttpError(404, "Viagem não encontrada.");
+    res.status(201).json({ sharing: await sharingState(trip) });
+  });
+  app.delete("/api/trips/:id/sharing", auth, async (req, res) => {
+    const trip = await c.trips.findOneAndUpdate(
+      tripQuery(req, true),
+      { $unset: { publicShare: "" } },
+      { returnDocument: "after" },
+    );
+    if (!trip) throw new HttpError(404, "Viagem não encontrada.");
+    res.json({ sharing: await sharingState(trip) });
+  });
+  app.post("/api/trips/:id/invite", auth, async (req, res) => {
+    const trip = await c.trips.findOneAndUpdate(
+      { ...tripQuery(req, true), "memberIds.18": { $exists: false } },
+      {
+        $set: {
+          invite: {
+            token: sessionToken(),
+            createdAt: new Date(),
+            expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          },
+        },
+      },
+      { returnDocument: "after" },
+    );
+    if (!trip) {
+      await ownerTrip(req);
+      throw new HttpError(400, "O limite é de 20 participantes por viagem.");
+    }
+    res.status(201).json({ sharing: await sharingState(trip) });
+  });
+  app.delete("/api/trips/:id/invite", auth, async (req, res) => {
+    const trip = await c.trips.findOneAndUpdate(
+      tripQuery(req, true),
+      { $unset: { invite: "" } },
+      { returnDocument: "after" },
+    );
+    if (!trip) throw new HttpError(404, "Viagem não encontrada.");
+    res.json({ sharing: await sharingState(trip) });
+  });
+  app.delete("/api/trips/:id/members/:memberId", auth, async (req, res) => {
+    const trip = await ownerTrip(req);
+    const memberId = String(req.params.memberId);
+    if (!/^[a-f\d]{24}$/i.test(memberId) || trip.ownerId.equals(memberId))
+      throw new HttpError(400, "Escolha um participante válido.");
+    const updated = await c.trips.findOneAndUpdate(
+      tripQuery(req, true),
+      { $pull: { memberIds: new ObjectId(memberId) } },
+      { returnDocument: "after" },
+    );
+    if (!updated) throw new HttpError(404, "Viagem não encontrada.");
+    res.json({ sharing: await sharingState(updated) });
+  });
+  app.get("/api/public/trips/:token", async (req, res) => {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    const trip = await c.trips.findOne({ "publicShare.token": linkToken(req) });
+    if (!trip)
+      throw new HttpError(404, "Este link foi desativado ou não existe.");
+    res.json({ trip: sharedTrip(trip) });
+  });
+  app.get("/api/public/invites/:token", async (req, res) => {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    const trip = await c.trips.findOne({
+      "invite.token": linkToken(req),
+      "invite.expiresAt": { $gt: new Date() },
+      "invite.acceptedBy": { $exists: false },
+    });
+    if (!trip)
+      throw new HttpError(
+        404,
+        "Este convite já foi usado, expirou ou foi cancelado.",
+      );
+    res.json({
+      trip: {
+        title: trip.title,
+        destination: trip.destination,
+        days: trip.days,
+        travelers: trip.travelers,
+        startDate: trip.startDate,
+      },
+      expiresAt: trip.invite!.expiresAt.toISOString(),
+    });
+  });
+  app.post("/api/invites/:token/accept", auth, async (req, res) => {
+    const token = linkToken(req),
+      userId = actors.get(req)!._id;
+    const existing = await c.trips.findOne({ "invite.token": token });
+    if (
+      existing &&
+      (existing.ownerId.equals(userId) ||
+        existing.memberIds?.some((id) => id.equals(userId)))
+    ) {
+      res.json({ tripId: existing._id.toHexString() });
+      return;
+    }
+    // Claiming the invitation and granting access happen in the same atomic write.
+    const trip = await c.trips.findOneAndUpdate(
+      {
+        "invite.token": token,
+        "invite.expiresAt": { $gt: new Date() },
+        "invite.acceptedBy": { $exists: false },
+        "memberIds.18": { $exists: false },
+      },
+      {
+        $addToSet: { memberIds: userId },
+        $set: { "invite.acceptedBy": userId },
+      },
+      { returnDocument: "after" },
+    );
+    if (!trip)
+      throw new HttpError(
+        410,
+        "Este convite já foi usado, expirou ou foi cancelado.",
+      );
+    res.json({ tripId: trip._id.toHexString() });
+  });
   app.use("/api", (_req, _res, next) =>
     next(new HttpError(404, "Recurso não encontrado.")),
   );
   app.use(
     (error: unknown, _req: Request, res: Response, _next: NextFunction) => {
       if (error instanceof ZodError)
-        return res
-          .status(400)
-          .json({
-            message:
-              error.issues[0]?.message || "Confira os campos preenchidos.",
-            fields: error.issues.map((i) => ({
-              path: i.path.join("."),
-              message: i.message,
-            })),
-          });
+        return res.status(400).json({
+          message: error.issues[0]?.message || "Confira os campos preenchidos.",
+          fields: error.issues.map((i) => ({
+            path: i.path.join("."),
+            message: i.message,
+          })),
+        });
       if (error instanceof HttpError)
         return res.status(error.status).json({ message: error.message });
       if (
@@ -378,11 +573,9 @@ export function makeApp(db: Db, config: AppConfig) {
         "status" in error &&
         error.status === 413
       )
-        return res
-          .status(413)
-          .json({
-            message: "Esse planejamento ultrapassa o tamanho permitido.",
-          });
+        return res.status(413).json({
+          message: "Esse planejamento ultrapassa o tamanho permitido.",
+        });
       if (error instanceof SyntaxError)
         return res
           .status(400)
@@ -391,12 +584,10 @@ export function makeApp(db: Db, config: AppConfig) {
         "Falha na API:",
         error instanceof Error ? error.name : "UnknownError",
       );
-      return res
-        .status(500)
-        .json({
-          message:
-            "Não foi possível concluir agora. Tente novamente em instantes.",
-        });
+      return res.status(500).json({
+        message:
+          "Não foi possível concluir agora. Tente novamente em instantes.",
+      });
     },
   );
   return app;

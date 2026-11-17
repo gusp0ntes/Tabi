@@ -191,6 +191,25 @@ export interface Trip extends TripData {
   revision: number;
   createdAt: string;
   updatedAt: string;
+  role?: "owner" | "editor";
+  participantCount?: number;
+}
+export type SharedTrip = Pick<
+  Trip,
+  | "title"
+  | "destination"
+  | "travelers"
+  | "days"
+  | "startDate"
+  | "outboundDate"
+  | "homeArrivalDate"
+  | "route"
+  | "updatedAt"
+> & { activities: Pick<Activity, "id" | "name" | "day" | "city">[] };
+export interface TripSharing {
+  publicPath: string | null;
+  invite: { path: string; expiresAt: string } | null;
+  members: { id: string; name: string; role: "owner" | "editor" }[];
 }
 export interface Recommendation {
   id: string;

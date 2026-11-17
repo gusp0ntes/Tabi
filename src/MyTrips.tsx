@@ -119,15 +119,22 @@ export default function MyTrips() {
                       <Link to={"/app/" + trip.id}>
                         <h2>{trip.title}</h2>
                       </Link>
-                      <button
-                        className="icon-button"
-                        aria-label={`Excluir ${trip.title}`}
-                        onClick={() => setDeleting(trip)}
-                      >
-                        <Trash2 size={15} />
-                      </button>
+                      {trip.role !== "editor" && (
+                        <button
+                          className="icon-button"
+                          aria-label={`Excluir ${trip.title}`}
+                          onClick={() => setDeleting(trip)}
+                        >
+                          <Trash2 size={15} />
+                        </button>
+                      )}
                     </div>
                     <div className="trip-meta">
+                      {trip.role === "editor" && (
+                        <span className="collaborator-badge">
+                          Compartilhada com você
+                        </span>
+                      )}
                       <span>
                         <CalendarDays size={13} />
                         {trip.startDate

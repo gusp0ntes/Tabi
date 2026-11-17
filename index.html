@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#151b17" />
+    <meta
+      name="description"
+      content="Seu destino, seus dias, seu jeito. Organize roteiro, orçamento e reservas em um só lugar com o Tabi."
+    />
+    <link rel="icon" href="/favicon.svg" />
+    <title>Tabi — seu próximo capítulo</title>
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("tabi.theme") === "light" ? "light" : "dark";
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+      document.documentElement.style.colorScheme =
+        document.documentElement.dataset.theme;
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

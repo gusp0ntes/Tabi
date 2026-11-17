@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tabi-api
+    runtime: node
+    buildCommand: npm ci --include=dev && npm run build:server && npm prune --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: tabi
+      - key: CLIENT_ORIGIN
+        sync: false
